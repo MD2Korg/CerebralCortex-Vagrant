@@ -1,8 +1,10 @@
 
 # Vagrant configuration for developing and testing Cerebral Cortex
-This repository is ideal for developers and engineers to install and test Cerebral Cortex
+This repository is ideal for developers and engineers to install and test
+Cerebral Cortex
 
-This configuration has been developed and testing on Ubuntu 17.04 and these instructions reflect this environment.
+This configuration has been developed and testing on Ubuntu 17.04 and these
+instructions reflect this environment.
 
 Install dependencies and Vagrant
 ```
@@ -33,3 +35,55 @@ HTTP request sent, awaiting response... 401 UNAUTHORIZED
 
 Username/Password Authentication Failed.
 ```
+
+
+## Starting and stopping Cerebral Cortex
+
+Start Cerebral Cortex
+```
+$ sudo vagrant up
+```
+
+Stop Cerebral Cortex
+```
+$ sudo vagrant halt
+```
+
+Suspend Cerebral Cortex
+```
+$ sudo vagrant suspend
+```
+
+Access Cerebral Cortex's console.  Docker-Compose commands can be used to
+interact with Cerebral Cortex's containers.
+```
+$ sudo vagrant ssh
+Last login: Fri Dec 22 03:01:17 2017 from 10.0.2.2
+[vagrant@cerebralcortex ~]$ cd CerebralCortex-DockerCompose/
+[vagrant@cerebralcortex CerebralCortex-DockerCompose]$ docker-compose ps
+     Name                    Command               State                                      Ports
+---------------------------------------------------------------------------------------------------------------------------------------
+md2k-api-server   /entrypoint.sh /start.sh         Up      443/tcp, 80/tcp
+md2k-cassandra    /bootstrap.sh cassandra -f       Up      7000/tcp, 7001/tcp, 7199/tcp, 0.0.0.0:9042->9042/tcp, 0.0.0.0:9160->9160/tcp
+md2k-grafana      /run.sh                          Up      0.0.0.0:3000->3000/tcp
+md2k-influxdb     /entrypoint.sh influxd           Up      0.0.0.0:8086->8086/tcp
+md2k-jupyterhub   jupyterhub --no-ssl --conf ...   Up
+md2k-kafka        start-kafka.sh                   Up      0.0.0.0:9092->9092/tcp
+md2k-minio        /usr/bin/docker-entrypoint ...   Up      0.0.0.0:9000->9000/tcp
+md2k-mysql        docker-entrypoint.sh mysqld      Up      0.0.0.0:3306->3306/tcp
+md2k-nginx        nginx -g daemon off;             Up      0.0.0.0:443->443/tcp, 0.0.0.0:80->80/tcp
+md2k-zookeeper    /bin/sh -c /usr/sbin/sshd  ...   Up      0.0.0.0:2181->2181/tcp, 22/tcp, 2888/tcp, 3888/tcp
+```
+
+## Using mCerebrum
+
+Download the latest mCerebrum from [https://github.com/MD2Korg/mCerebrum-releases/tree/master/2.0/org.md2k.mcerebrum](https://github.com/MD2Korg/mCerebrum-releases/tree/master/2.0/org.md2k.mcerebrum)
+
+Login to the mCerebrum application with the following information:
+* Login: string
+* Password: string
+* Server: http://YOUR_MACHINE_IP_OR_DNS_NAME/
+
+Once the system successfully authenticates, it will download a predefined
+configuration file for you to test our the platform.  Once `Start Study` is
+pressed the system will begin collecting and uploading to this enviornment.
