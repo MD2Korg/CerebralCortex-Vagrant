@@ -169,7 +169,7 @@ Vagrant.configure("2") do |config|
   SHELL
 
   # Getting test data from mHealth
-  config.vm.provision "shell", run: "always", inline: <<-SHELL
+  config.vm.provision "shell", inline: <<-SHELL
     set -x
     cd /home/vagrant/CerebralCortex-DockerCompose/data/
     ggID=1HKH6sxPgbKTqm1THAEIEzPVmUwlrZibS
