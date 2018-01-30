@@ -88,19 +88,86 @@ Vagrant.configure("2") do |config|
     git clone https://github.com/MD2Korg/CerebralCortex-DockerCompose
     git clone https://github.com/MD2Korg/CerebralCortex
     git clone https://github.com/MD2Korg/CerebralCortex-APIServer
+    git clone https://github.com/MD2Korg/CerebralCortex-KafkaStreamPreprocessor.git
+    git clone https://github.com/MD2Korg/CerebralCortex-Scripts.git
+  SHELL
+
+# Installing python3 and Apache Spark
+  config.vm.provision "shell", inline: <<-SHELL
+    yum install -y https://centos7.iuscommunity.org/ius-release.rpm
+    yum install -y python36u
+    yum install -y python36u-pip
+    yum install -y java-1.8.0-openjdk
+    ln -s /usr/lib/jvm/java-1.8* /usr/lib/jvm/java
+    yum install -y wget
+    wget -q http://d3kbcqa49mib13.cloudfront.net/spark-2.2.0-bin-hadoop2.7.tgz
+    tar xzf spark-2.2.0-bin-hadoop2.7.tgz -C /usr/local && rm spark-2.2.0-bin-hadoop2.7.tgz
+    ln -s /usr/local/spark-2.2.0-bin-hadoop2.7 /usr/local/spark
+    pip3.6 install minio
+    pip3.6 install numpy
+    pip3.6 install scipy
+    pip3.6 install -r CerebralCortex-KafkaStreamPreprocessor/requirements.txt 
+
+  SHELL
+  
+
+# Setting the log4j properties for Spark
+  config.vm.provision "shell", inline: <<-SHELL
+    set -x
+    echo "log4j.rootLogger=INFO, file" >> /usr/local/spark/conf/log4j.properties
+    echo "log4j.appender.file=org.apache.log4j.RollingFileAppender" >> /usr/local/spark/conf/log4j.properties
+    echo "log4j.appender.file.File=/tmp/logs/spark.log" >> /usr/local/spark/conf/log4j.properties
+    echo "log4j.appender.file.MaxFileSize=10MB" >> /usr/local/spark/conf/log4j.properties
+    echo "log4j.appender.file.MaxBackupIndex=10" >> /usr/local/spark/conf/log4j.properties
+    echo "log4j.appender.file.layout=org.apache.log4j.PatternLayout" >> /usr/local/spark/conf/log4j.properties
+    echo "log4j.appender.file.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss}%-5p%c{1}:%L - %m%n" >> /usr/local/spark/conf/log4j.properties
+    echo "log4j.logger.org.apache.spark.repl.Main=WARN" >> /usr/local/spark/conf/log4j.properties
+    echo "log4j.logger.org.spark_project.jetty=WARN" >> /usr/local/spark/conf/log4j.properties
+    echo "log4j.logger.org.spark_project.jetty.util.component.AbstractLifeCycle=ERROR" >> /usr/local/spark/conf/log4j.properties
+    echo "log4j.logger.org.apache.spark.repl.SparkIMain$exprTyper=INFO" >> /usr/local/spark/conf/log4j.properties
+    echo "log4j.logger.org.apache.spark.repl.SparkILoop$SparkILoopInterpreter=INFO" >> /usr/local/spark/conf/log4j.properties
+    echo "log4j.logger.org.apache.parquet=ERROR" >> /usr/local/spark/conf/log4j.properties
+    echo "log4j.logger.parquet=ERROR" >> /usr/local/spark/conf/log4j.properties
+    echo "log4j.logger.org.apache.hadoop.hive.metastore.RetryingHMSHandler=FATAL" >> /usr/local/spark/conf/log4j.properties
+    echo "log4j.logger.org.apache.hadoop.hive.ql.exec.FunctionRegistry=ERROR" >> /usr/local/spark/conf/log4j.properties
+
   SHELL
 
 
-  
+# Setting the environment variables
+#  config.vm.provision "shell", run: "always", inline: <<-SHELL
+#    set -x
+#    [ -z $JAVA_HOME ] && echo "export JAVA_HOME=/usr/lib/jvm/java/jre" >> ~/.bashrc
+#  SHELL
+
+
   config.vm.provision :docker
   config.vm.provision :docker_compose, yml: "/home/vagrant/CerebralCortex-DockerCompose/docker-compose.yml", env: { "MACHINE_IP" => "#{machine_ip}" }, run: "always"
 
   # Temporary fix for mysql-apiserver startup problem
-  config.vm.provision "shell", inline: <<-SHELL
+  config.vm.provision "shell", run: "always", inline: <<-SHELL
+    set -x
     cd /home/vagrant/CerebralCortex-DockerCompose
     /usr/local/bin/docker-compose restart apiserver
   SHELL
   
+
+  # Temporary fix for mysql-apiserver startup problem
+  config.vm.provision "shell", run: "always", inline: <<-SHELL
+    set -x
+    cd /home/vagrant/CerebralCortex
+    /usr/bin/python3.6 setup.py install
+    cd /home/vagrant/CerebralCortex-KafkaStreamPreprocessor
+    /usr/bin/python3.6 setup.py install
+  SHELL
+
+  
+  config.vm.provision "shell", run: "always", inline: <<-SHELL
+    set -x
+    /usr/bin/sh
+    /home/vagrant/CerebralCortex-KafkaStreamPreprocessor/run_vagrant.sh >> /tmp/spark_stderr 2>&1 &
+  SHELL
+
   # config.vm.provision "docker" do |d|
   #   d.pull_images "hello-world"
   # end
