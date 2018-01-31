@@ -151,6 +151,11 @@ Vagrant.configure("2") do |config|
     /usr/local/bin/docker-compose restart apiserver
   SHELL
   
+  # creating default database in influxdb
+  config.vm.provision "shell", inline: <<-SHELL
+    set -x
+    curl -G http://localhost:8086/query --data-urlencode "q=CREATE DATABASE cerebralcortex_raw"
+  SHELL
 
   # Temporary fix for mysql-apiserver startup problem
   config.vm.provision "shell", inline: <<-SHELL
