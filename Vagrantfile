@@ -95,17 +95,14 @@ Vagrant.configure("2") do |config|
 # Installing python3 and Apache Spark
   config.vm.provision "shell", inline: <<-SHELL
     yum install -y https://centos7.iuscommunity.org/ius-release.rpm
-    yum install -y python36u
-    yum install -y python36u-pip
-    yum install -y java-1.8.0-openjdk
+    yum install -y python36u python36u-devel python36u-pip java-1.8.0-openjdk libev libev-devel gcc wget 
+
     ln -s /usr/lib/jvm/java-1.8* /usr/lib/jvm/java
-    yum install -y wget
+
     wget -q http://d3kbcqa49mib13.cloudfront.net/spark-2.2.0-bin-hadoop2.7.tgz
     tar xzf spark-2.2.0-bin-hadoop2.7.tgz -C /usr/local && rm spark-2.2.0-bin-hadoop2.7.tgz
     ln -s /usr/local/spark-2.2.0-bin-hadoop2.7 /usr/local/spark
-    pip3.6 install minio
-    pip3.6 install numpy
-    pip3.6 install scipy
+    pip3.6 install minio==2.2.4 numpy scipy
     pip3.6 install -r CerebralCortex-KafkaStreamPreprocessor/requirements.txt 
 
   SHELL
