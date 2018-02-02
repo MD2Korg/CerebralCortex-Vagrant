@@ -86,7 +86,7 @@ Vagrant.configure("2") do |config|
     yum install -y git
     rm -rf CerebralCortex*
     git clone https://github.com/MD2Korg/CerebralCortex-DockerCompose
-    git clone https://github.com/MD2Korg/CerebralCortex
+    git clone https://github.com/MD2Korg/CerebralCortex -b 2.1.2
     git clone https://github.com/MD2Korg/CerebralCortex-APIServer
     git clone https://github.com/MD2Korg/CerebralCortex-KafkaStreamPreprocessor.git
     git clone https://github.com/MD2Korg/CerebralCortex-Scripts.git
