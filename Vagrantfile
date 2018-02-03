@@ -85,11 +85,11 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: <<-SHELL
     yum install -y git
     rm -rf CerebralCortex*
-    git clone https://github.com/MD2Korg/CerebralCortex-DockerCompose
+    git clone https://github.com/MD2Korg/CerebralCortex-DockerCompose -b 2.1.2
     git clone https://github.com/MD2Korg/CerebralCortex -b 2.1.2
-    git clone https://github.com/MD2Korg/CerebralCortex-APIServer
-    git clone https://github.com/MD2Korg/CerebralCortex-KafkaStreamPreprocessor.git
-    git clone https://github.com/MD2Korg/CerebralCortex-Scripts.git
+    git clone https://github.com/MD2Korg/CerebralCortex-APIServer -b 2.1.2
+    git clone https://github.com/MD2Korg/CerebralCortex-KafkaStreamPreprocessor.git -b 2.1.2
+    git clone https://github.com/MD2Korg/CerebralCortex-Scripts.git -b 2.1.2
   SHELL
 
 # Installing python3 and Apache Spark
