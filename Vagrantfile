@@ -83,7 +83,7 @@ Vagrant.configure("2") do |config|
 
 
   config.vm.provision "shell", inline: <<-SHELL
-    yum install -y git
+    yum install -y git vim
     rm -rf CerebralCortex*
     git clone https://github.com/MD2Korg/CerebralCortex-DockerCompose -b 2.1.2
     git clone https://github.com/MD2Korg/CerebralCortex -b 2.1.2
