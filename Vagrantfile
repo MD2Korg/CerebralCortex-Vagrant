@@ -163,7 +163,7 @@ Vagrant.configure("2") do |config|
     /usr/bin/python3.6 setup.py install
   SHELL
 
-  
+ # starting the Kafka stream pre processor 
   config.vm.provision "shell", run: "always", inline: <<-SHELL
     set -x
     cd /home/vagrant/CerebralCortex-KafkaStreamPreprocessor
