@@ -102,7 +102,8 @@ Vagrant.configure("2") do |config|
     wget -q http://d3kbcqa49mib13.cloudfront.net/spark-2.2.0-bin-hadoop2.7.tgz
     tar xzf spark-2.2.0-bin-hadoop2.7.tgz -C /usr/local && rm spark-2.2.0-bin-hadoop2.7.tgz
     ln -s /usr/local/spark-2.2.0-bin-hadoop2.7 /usr/local/spark
-    pip3.6 install minio==2.2.4 numpy scipy
+    pip3.6 install -U wheel
+    pip3.6 install -r CerebralCortex/requirements.txt 
     pip3.6 install -r CerebralCortex-KafkaStreamPreprocessor/requirements.txt 
 
   SHELL
@@ -141,7 +142,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision :docker
   config.vm.provision :docker_compose, yml: "/home/vagrant/CerebralCortex-DockerCompose/docker-compose.yml", env: { "MACHINE_IP" => "#{machine_ip}" }, run: "always"
 
-  # Temporary fix for mysql-apiserver startup problem
+  # Restart mysql-apiserver
   config.vm.provision "shell", run: "always", inline: <<-SHELL
     set -x
     cd /home/vagrant/CerebralCortex-DockerCompose
@@ -154,7 +155,7 @@ Vagrant.configure("2") do |config|
     curl -G http://localhost:8086/query --data-urlencode "q=CREATE DATABASE cerebralcortex_raw"
   SHELL
 
-  # Temporary fix for mysql-apiserver startup problem
+  # Install required Cerebral* libraries
   config.vm.provision "shell", inline: <<-SHELL
     set -x
     cd /home/vagrant/CerebralCortex
@@ -174,18 +175,11 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: <<-SHELL
     set -x
     cd /home/vagrant/CerebralCortex-DockerCompose/data/
-    ggID=1HKH6sxPgbKTqm1THAEIEzPVmUwlrZibS
-    ggURL='https://drive.google.com/uc?export=download'
-    filename="$(curl -sc /tmp/gcokie "${ggURL}&id=${ggID}" | grep -o '="uc-name.*</span>' | sed 's/.*">//;s/<.a> .*//')"
-    getcode="$(awk '/_warning_/ {print $NF}' /tmp/gcokie)"
-    curl -Lb /tmp/gcokie "${ggURL}&confirm=${getcode}&id=${ggID}" -o "${filename}"
+    wget https://mhealth.md2k.org/images/datasets/mCerebrum_test_data.tar.bz2
     tar -xf mCerebrum_test_data.tar.bz2
     rm -f mCerebrum_test_data.tar.bz2
     cd /home/vagrant/CerebralCortex-Scripts/data_replay
     python3.6 replay_data.py -b "127.0.0.1:9092" -d "/home/vagrant/CerebralCortex-DockerCompose/data/636fcc1f-8966-4e63-a9df-0cbaa6e9296c/"
   SHELL
-  # config.vm.provision "docker" do |d|
-  #   d.pull_images "hello-world"
-  # end
 
 end
