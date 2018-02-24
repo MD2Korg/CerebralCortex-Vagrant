@@ -25,6 +25,7 @@ Vagrant.configure("2") do |config|
   # accessing "localhost:8080" will access port 80 on the guest machine.
   # NOTE: This will enable public access to the opened port
   config.vm.network "forwarded_port", guest: 80, host: 80
+  config.vm.network "forwarded_port", guest: 50070, host: 50070
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine and only allow access
@@ -85,11 +86,11 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: <<-SHELL
     yum install -y git vim
     rm -rf CerebralCortex*
-    git clone https://github.com/MD2Korg/CerebralCortex-DockerCompose -b 2.1.2
-    git clone https://github.com/MD2Korg/CerebralCortex -b 2.1.2
-    git clone https://github.com/MD2Korg/CerebralCortex-APIServer -b 2.1.2
-    git clone https://github.com/MD2Korg/CerebralCortex-KafkaStreamPreprocessor.git -b 2.1.2
-    git clone https://github.com/MD2Korg/CerebralCortex-Scripts.git -b 2.1.2
+    git clone https://github.com/MD2Korg/CerebralCortex-DockerCompose -b 2.2.0
+    git clone https://github.com/MD2Korg/CerebralCortex -b 2.2.0
+    git clone https://github.com/MD2Korg/CerebralCortex-APIServer -b 2.2.0
+    git clone https://github.com/MD2Korg/CerebralCortex-KafkaStreamPreprocessor.git -b 2.2.0
+    git clone https://github.com/MD2Korg/CerebralCortex-Scripts.git -b 2.2.0
   SHELL
 
 # Installing python3 and Apache Spark
@@ -142,11 +143,11 @@ Vagrant.configure("2") do |config|
   config.vm.provision :docker
   config.vm.provision :docker_compose, yml: "/home/vagrant/CerebralCortex-DockerCompose/docker-compose.yml", env: { "MACHINE_IP" => "#{machine_ip}" }, run: "always"
 
-  # Restart mysql-apiserver
+  # Restart mysql
   config.vm.provision "shell", run: "always", inline: <<-SHELL
     set -x
     cd /home/vagrant/CerebralCortex-DockerCompose
-    /usr/local/bin/docker-compose restart apiserver
+    /usr/local/bin/docker-compose restart mysql
   SHELL
   
   # creating default database in influxdb
@@ -173,13 +174,12 @@ Vagrant.configure("2") do |config|
 
   # Getting test data from mHealth
   config.vm.provision "shell", inline: <<-SHELL
-    set -x
     cd /home/vagrant/CerebralCortex-DockerCompose/data/
-    wget https://mhealth.md2k.org/images/datasets/mCerebrum_test_data.tar.bz2
+    wget --quiet https://mhealth.md2k.org/images/datasets/mCerebrum_test_data.tar.bz2
     tar -xf mCerebrum_test_data.tar.bz2
     rm -f mCerebrum_test_data.tar.bz2
     cd /home/vagrant/CerebralCortex-Scripts/data_replay
-    python3.6 replay_data.py -b "127.0.0.1:9092" -d "/home/vagrant/CerebralCortex-DockerCompose/data/636fcc1f-8966-4e63-a9df-0cbaa6e9296c/"
+    python3.6 replay_data_using_kafka.py -b "127.0.0.1:9092" -d "/home/vagrant/CerebralCortex-DockerCompose/data"
   SHELL
 
 end
