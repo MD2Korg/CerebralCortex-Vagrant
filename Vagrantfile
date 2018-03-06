@@ -88,7 +88,7 @@ Vagrant.configure("2") do |config|
     rm -rf CerebralCortex*
     git clone https://github.com/MD2Korg/CerebralCortex-DockerCompose -b 2.2.1
     git clone https://github.com/MD2Korg/CerebralCortex -b 2.2.1
-    git clone https://github.com/MD2Korg/CerebralCortex-APIServer -b 2.1.2
+    git clone https://github.com/MD2Korg/CerebralCortex-APIServer -b 2.2.1
     git clone https://github.com/MD2Korg/CerebralCortex-KafkaStreamPreprocessor.git -b 2.2.1
     git clone https://github.com/MD2Korg/CerebralCortex-Scripts.git -b 2.2.1
   SHELL
@@ -176,6 +176,7 @@ Vagrant.configure("2") do |config|
     cd /home/vagrant/
     chown vagrant . -R
     chgrp vagrant . -R 
+    service rsyslog restart
   SHELL
 
 end
