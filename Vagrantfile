@@ -25,7 +25,7 @@ Vagrant.configure("2") do |config|
   # accessing "localhost:8080" will access port 80 on the guest machine.
   # NOTE: This will enable public access to the opened port
   config.vm.network "forwarded_port", guest: 80, host: 80
-  config.vm.network "forwarded_port", guest: 50070, host: 50070
+  config.vm.network "forwarded_port", guest: 9870, host: 9870
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine and only allow access
@@ -86,11 +86,11 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: <<-SHELL
     yum install -y git vim
     rm -rf CerebralCortex*
-    git clone https://github.com/MD2Korg/CerebralCortex-DockerCompose -b 2.2.0
-    git clone https://github.com/MD2Korg/CerebralCortex -b 2.2.0
-    git clone https://github.com/MD2Korg/CerebralCortex-APIServer -b 2.2.0
-    git clone https://github.com/MD2Korg/CerebralCortex-KafkaStreamPreprocessor.git -b 2.2.0
-    git clone https://github.com/MD2Korg/CerebralCortex-Scripts.git -b 2.2.0
+    git clone https://github.com/MD2Korg/CerebralCortex-DockerCompose -b 2.2.1
+    git clone https://github.com/MD2Korg/CerebralCortex -b 2.2.1
+    git clone https://github.com/MD2Korg/CerebralCortex-APIServer -b 2.1.2
+    git clone https://github.com/MD2Korg/CerebralCortex-KafkaStreamPreprocessor.git -b 2.2.1
+    git clone https://github.com/MD2Korg/CerebralCortex-Scripts.git -b 2.2.1
   SHELL
 
 # Installing python3 and Apache Spark
@@ -133,53 +133,49 @@ Vagrant.configure("2") do |config|
   SHELL
 
 
-# Setting the environment variables
-#  config.vm.provision "shell", run: "always", inline: <<-SHELL
-#    set -x
-#    [ -z $JAVA_HOME ] && echo "export JAVA_HOME=/usr/lib/jvm/java/jre" >> ~/.bashrc
-#  SHELL
-
 
   config.vm.provision :docker
   config.vm.provision :docker_compose, yml: "/home/vagrant/CerebralCortex-DockerCompose/docker-compose.yml", env: { "MACHINE_IP" => "#{machine_ip}" }, run: "always"
 
   # Restart mysql
   config.vm.provision "shell", run: "always", inline: <<-SHELL
-    set -x
     cd /home/vagrant/CerebralCortex-DockerCompose
     /usr/local/bin/docker-compose restart mysql
   SHELL
   
   # creating default database in influxdb
   config.vm.provision "shell", inline: <<-SHELL
-    set -x
     curl -G http://localhost:8086/query --data-urlencode "q=CREATE DATABASE cerebralcortex_raw"
   SHELL
 
   # Install required Cerebral* libraries
   config.vm.provision "shell", inline: <<-SHELL
-    set -x
     cd /home/vagrant/CerebralCortex
     /usr/bin/python3.6 setup.py install
     cd /home/vagrant/CerebralCortex-KafkaStreamPreprocessor
     /usr/bin/python3.6 setup.py install
   SHELL
 
- # starting the Kafka stream pre processor 
-  config.vm.provision "shell", run: "always", inline: <<-SHELL
+  # setting up HDFS
+  config.vm.provision "shell", inline: <<-SHELL
     set -x
-    cd /home/vagrant/CerebralCortex-KafkaStreamPreprocessor
-    /usr/bin/sh ./run_vagrant.sh >> /tmp/spark_stderr 2>&1 &
+    wget --quiet http://apache.cs.utah.edu/hadoop/common/hadoop-3.0.0/hadoop-3.0.0.tar.gz
+    tar -xf hadoop-3.0.0.tar.gz
+    rm -f hadoop-3.0.0.tar.gz
+    mv hadoop-3.0.0 hadoop
+    cp /vagrant/hadoop/* /home/vagrant/hadoop/etc/hadoop
+    su - vagrant -c "ssh-keygen -f /home/vagrant/.ssh/id_rsa -N ''"
+    su - vagrant -c 'cat /home/vagrant/.ssh/id_rsa.pub >> /home/vagrant/.ssh/known_hosts'
+    su - vagrant -c 'cat /home/vagrant/.ssh/id_rsa.pub >> /home/vagrant/.ssh/authorized_keys'
+    su - vagrant -c '/home/vagrant/hadoop/bin/hadoop namenode -format'
+
+    su - vagrant -c '/home/vagrant/hadoop/sbin/start-all.sh'
   SHELL
 
-  # Getting test data from mHealth
-  config.vm.provision "shell", inline: <<-SHELL
-    cd /home/vagrant/CerebralCortex-DockerCompose/data/
-    wget --quiet https://mhealth.md2k.org/images/datasets/mCerebrum_test_data.tar.bz2
-    tar -xf mCerebrum_test_data.tar.bz2
-    rm -f mCerebrum_test_data.tar.bz2
-    cd /home/vagrant/CerebralCortex-Scripts/data_replay
-    python3.6 replay_data_using_kafka.py -b "127.0.0.1:9092" -d "/home/vagrant/CerebralCortex-DockerCompose/data"
+  config.vm.provision "shell",inline: <<-SHELL
+    cd /home/vagrant/
+    chown vagrant . -R
+    chgrp vagrant . -R 
   SHELL
 
 end

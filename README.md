@@ -76,6 +76,30 @@ md2k-nginx        nginx -g daemon off;             Up      0.0.0.0:443->443/tcp,
 md2k-zookeeper    /bin/sh -c /usr/sbin/sshd  ...   Up      0.0.0.0:2181->2181/tcp, 22/tcp, 2888/tcp, 3888/tcp
 ```
 
+## Importing data
+The
+`/home/vagrant/CerebralCortex-DockerCompose/cc_config_file\cc_vagrant_configuration.yml`
+contains the parameter that stores the path from where data can be imported into 
+CerebralCortex
+
+Copy data into the directory used in the configuraton file.
+```
+cd /home/vagrant/CerebralCortex-DockerCompose/data/
+wget https://mhealth.md2k.org/images/datasets/mCerebrum_test_data.tar.bz2
+tar -xf mCerebrum_test_data.tar.bz2
+rm -f mCerebrum_test_data.tar.bz2
+```
+
+Import the data into CerebralCortex
+```
+cd /home/vagrant/CerebralCortex-Scripts/data_replay/
+python3.6 store_dirs_to_db.py --conf
+/home/vagrant/CerebralCortex-DockerCompose/cc_config_file/cc_vagrant_configuration.yml
+
+cd /home/vagrant/CerebralCortex-KafkaStreamPreprocessor/
+sh run_vagrant.sh
+
+```
 ## Using mCerebrum
 
 Download the latest mCerebrum from [https://github.com/MD2Korg/mCerebrum-releases/tree/master/2.0/org.md2k.mcerebrum](https://github.com/MD2Korg/mCerebrum-releases/tree/master/2.0/org.md2k.mcerebrum)
