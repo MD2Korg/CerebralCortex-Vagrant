@@ -25,7 +25,6 @@ Vagrant.configure("2") do |config|
   # accessing "localhost:8080" will access port 80 on the guest machine.
   # NOTE: This will enable public access to the opened port
   config.vm.network "forwarded_port", guest: 80, host: 80
-  config.vm.network "forwarded_port", guest: 9870, host: 9870
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine and only allow access
@@ -140,7 +139,7 @@ Vagrant.configure("2") do |config|
   # Restart mysql
   config.vm.provision "shell", run: "always", inline: <<-SHELL
     cd /home/vagrant/CerebralCortex-DockerCompose
-    /usr/local/bin/docker-compose restart mysql
+    /usr/local/bin/docker-compose restart apiserver
   SHELL
   
   # creating default database in influxdb
@@ -156,23 +155,8 @@ Vagrant.configure("2") do |config|
     /usr/bin/python3.6 setup.py install
   SHELL
 
-  # setting up HDFS
-  config.vm.provision "shell", inline: <<-SHELL
-    set -x
-    wget --quiet http://apache.cs.utah.edu/hadoop/common/hadoop-3.0.0/hadoop-3.0.0.tar.gz
-    tar -xf hadoop-3.0.0.tar.gz
-    rm -f hadoop-3.0.0.tar.gz
-    mv hadoop-3.0.0 hadoop
-    cp /vagrant/hadoop/* /home/vagrant/hadoop/etc/hadoop
-    su - vagrant -c "ssh-keygen -f /home/vagrant/.ssh/id_rsa -N ''"
-    su - vagrant -c 'cat /home/vagrant/.ssh/id_rsa.pub >> /home/vagrant/.ssh/known_hosts'
-    su - vagrant -c 'cat /home/vagrant/.ssh/id_rsa.pub >> /home/vagrant/.ssh/authorized_keys'
-    su - vagrant -c '/home/vagrant/hadoop/bin/hadoop namenode -format'
-
-    su - vagrant -c '/home/vagrant/hadoop/sbin/start-all.sh'
-  SHELL
-
   config.vm.provision "shell",inline: <<-SHELL
+    cp /vagrant/hosts /etc/hosts
     cd /home/vagrant/
     chown vagrant . -R
     chgrp vagrant . -R 
