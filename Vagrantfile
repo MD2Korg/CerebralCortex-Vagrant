@@ -85,11 +85,11 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: <<-SHELL
     yum install -y git vim
     rm -rf CerebralCortex*
-    git clone https://github.com/MD2Korg/CerebralCortex-DockerCompose -b 2.2.1
-    git clone https://github.com/MD2Korg/CerebralCortex -b 2.2.1
-    git clone https://github.com/MD2Korg/CerebralCortex-APIServer -b 2.2.1
-    git clone https://github.com/MD2Korg/CerebralCortex-KafkaStreamPreprocessor.git -b 2.2.1
-    git clone https://github.com/MD2Korg/CerebralCortex-Scripts.git -b 2.2.1
+    git clone https://github.com/MD2Korg/CerebralCortex-DockerCompose -b 2.2.2
+    git clone https://github.com/MD2Korg/CerebralCortex -b 2.2.2
+    git clone https://github.com/MD2Korg/CerebralCortex-APIServer -b 2.2.2 
+    git clone https://github.com/MD2Korg/CerebralCortex-KafkaStreamPreprocessor.git -b 2.2.2
+    git clone https://github.com/MD2Korg/CerebralCortex-Scripts.git -b 2.2.2
   SHELL
 
 # Installing python3 and Apache Spark
@@ -103,6 +103,7 @@ Vagrant.configure("2") do |config|
     tar xzf spark-2.2.0-bin-hadoop2.7.tgz -C /usr/local && rm spark-2.2.0-bin-hadoop2.7.tgz
     ln -s /usr/local/spark-2.2.0-bin-hadoop2.7 /usr/local/spark
     pip3.6 install -U wheel
+    sed -i '/cassandra-driver==3.12.0/d' CerebralCortex/requirements.txt 
     pip3.6 install -r CerebralCortex/requirements.txt 
     pip3.6 install -r CerebralCortex-KafkaStreamPreprocessor/requirements.txt 
 
