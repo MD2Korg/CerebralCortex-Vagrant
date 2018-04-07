@@ -16,7 +16,7 @@ $ sudo dpkg -i vagrant_2.0.1_x86_64.deb
 
 Install the docker-compose plugin for Vagrant
 ```
-$ vagrant plugin install vagrant-docker-compose
+$ sudo vagrant plugin install vagrant-docker-compose
 ```
 
 Clone this repository and launch Cerebral Cortex.  Note: Vagrant must be run as superuser to properly forward ports
