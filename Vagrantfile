@@ -103,7 +103,7 @@ Vagrant.configure("2") do |config|
     tar xzf spark-2.2.0-bin-hadoop2.7.tgz -C /usr/local && rm spark-2.2.0-bin-hadoop2.7.tgz
     ln -s /usr/local/spark-2.2.0-bin-hadoop2.7 /usr/local/spark
     pip3.6 install -U wheel
-    sed -i '/cassandra-driver==3.12.0/d' CerebralCortex/requirements.txt 
+    #sed -i '/cassandra-driver==3.12.0/d' CerebralCortex/requirements.txt
     pip3.6 install -r CerebralCortex/requirements.txt 
     pip3.6 install -r CerebralCortex-KafkaStreamPreprocessor/requirements.txt 
 
