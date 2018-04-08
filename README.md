@@ -97,7 +97,7 @@ python3.6 store_dirs_to_db.py --conf
 /home/vagrant/CerebralCortex-DockerCompose/cc_config_file/cc_vagrant_configuration.yml
 
 cd /home/vagrant/CerebralCortex-KafkaStreamPreprocessor/
-sh run_vagrant.sh
+sudo sh run_vagrant.sh
 
 ```
 ## Using mCerebrum
