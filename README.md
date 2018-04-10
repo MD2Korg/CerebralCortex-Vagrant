@@ -21,7 +21,7 @@ $ sudo vagrant plugin install vagrant-docker-compose
 
 Clone this repository and launch Cerebral Cortex.  Note: Vagrant must be run as superuser to properly forward ports
 ```
-$ git clone https://github.com/MD2KOrg/CerebralCortex-Vagrant -b 2.2.1
+$ git clone https://github.com/MD2KOrg/CerebralCortex-Vagrant -b 2.2.2
 $ cd CerebralCortex-Vagrant
 $ sudo vagrant up
 ```
