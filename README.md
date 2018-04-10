@@ -126,5 +126,4 @@ Run following commands if anything goes wrong and/or you want to uninstall Cereb
 sudo vagrant global-status
 Find the IMAGE-NAME. It would be required for next command
 sudo vagrant destroy  IMAGE-NAME
-sudo vagrant box remove centos/7
 ```
