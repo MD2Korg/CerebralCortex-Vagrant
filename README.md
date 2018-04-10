@@ -76,6 +76,13 @@ md2k-nginx        nginx -g daemon off;             Up      0.0.0.0:443->443/tcp,
 md2k-zookeeper    /bin/sh -c /usr/sbin/sshd  ...   Up      0.0.0.0:2181->2181/tcp, 22/tcp, 2888/tcp, 3888/tcp
 ```
 
+## Running test cases
+Run system level test-cases to make sure all the things are setup properly.
+```
+cd /home/vagrant/CerebralCortex/cerebralcortex/core/test_suite/
+python3.6 -m unittest discover
+```
+
 ## Importing data
 The
 `/home/vagrant/CerebralCortex-DockerCompose/cc_config_file\cc_vagrant_configuration.yml`
@@ -112,3 +119,12 @@ Login to the mCerebrum application with the following information:
 Once the system successfully authenticates, it will download a predefined
 configuration file for you to test our the platform.  Once `Start Study` is
 pressed the system will begin collecting and uploading to this enviornment.
+
+## Removing Vagrant image of CC
+Run following commands if anything goes wrong and/or you want to uninstall CerebralCortex vagrant image
+```
+sudo vagrant global-status
+Find the IMAGE-NAME. It would be required for next command
+sudo vagrant destroy  IMAGE-NAME
+sudo vagrant box remove centos/7
+```
