@@ -108,6 +108,28 @@ cd /home/vagrant/CerebralCortex-KafkaStreamPreprocessor/
 sudo sh run_vagrant.sh
 
 ```
+## Using Jupyter Notebook
+You may access Python Jupyter Notebook interface at:
+```
+http://IP-ADDRESS/jupyterhub
+```
+
+Default user for Jupyter notebook is
+```
+User Name: md2k
+Password: mdk2
+```
+To add another user to Jupyter Notebook:
+```
+cd CerebralCortex-DockerCompose/
+docker-compose exec jupyter bash
+useradd -m USER-NAME && echo "USER-NAME:PASSWORD" | chpasswd
+```
+To create new python script:
+```
+Authenticate with user credentials, click on Files tab, click on new and select pySpark (Spark 2.2.0) (Python 3) to create a new Python script.
+```
+
 ## Using mCerebrum
 
 Download the latest mCerebrum from [https://github.com/MD2Korg/mCerebrum-releases/tree/master/2.0/org.md2k.mcerebrum](https://github.com/MD2Korg/mCerebrum-releases/tree/master/2.0/org.md2k.mcerebrum)
