@@ -108,6 +108,13 @@ cd /home/vagrant/CerebralCortex-KafkaStreamPreprocessor/
 sudo sh run_vagrant.sh
 
 ```
+## Increasing the available disk space in VM
+Edit the Vagrant file to add the following line.
+```
+config.vm.synced_folder "<host_machine_folder_path>", "<foder_path_in_VM>"
+```
+This will mount a folder from the host machine in the VM. 
+
 ## Using Jupyter Notebook
 You may access Python Jupyter Notebook interface at:
 ```
