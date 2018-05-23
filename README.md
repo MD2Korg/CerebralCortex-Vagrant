@@ -127,7 +127,9 @@ useradd -m USER-NAME && echo "USER-NAME:PASSWORD" | chpasswd
 ```
 To create new python script:
 ```
-Authenticate with user credentials, click on Files tab, click on new and select pySpark (Spark 2.2.0) (Python 3) to create a new Python script.
+Authenticate with user credentials
+Click on Files tab
+Click on new and select pySpark (Spark 2.2.0) (Python 3) to create a new Python script.
 ```
 
 ## Using mCerebrum
