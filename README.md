@@ -2,7 +2,7 @@
 # Vagrant configuration for installing Cerebral Cortex
 This repository is ideal for developers and engineers to install the Cerebral Cortex framework.
 
-This configuration has been tested on Ubuntu 17.04.
+This configuration has been tested on Ubuntu 17.10.
 
 1. To install Vagrant and dependencies
 ```
@@ -17,6 +17,7 @@ $ sudo dpkg -i vagrant_2.0.1_x86_64.deb
 $ sudo vagrant plugin install vagrant-docker-compose
 $ sudo vagrant plugin install vagrant-vbguest
 ```
+Please consult [Vagrant Documentation](https://www.vagrantup.com/docs/)  if you face any installation errors for step 1 and 2. 
 
 3. Clone this CerebralCortex-Vagrant repository.  Note: Vagrant must be run as superuser to properly forward ports
 ```
@@ -38,10 +39,6 @@ Username/Password Authentication Failed.
 ```
 The `Username/Password Authentication Failed` response confirms that the installation was successful and the system is online.
 
-##FAQ
-XXX Add me
-1. System requirements
-2. Possible errors that can be encountered during the installation.
 
 The following commands lists the the status of all the services used by CerebralCortex.  Docker-Compose commands can be used to
 interact with Cerebral Cortex's containers.
@@ -65,8 +62,7 @@ The above command displays the status of all the services as shown below.
 ```
 
 ## Running test cases
-explain what this test case is 
-Run system level test-cases to make sure all the things are setup properly.
+Run system level test-cases to make sure all the things are setup properly. System level test case will generate some sample data, process it using CerebralCortex, store it, retrieve it and verify results with predefined test values.
 ```
 cd /home/vagrant/CerebralCortex/cerebralcortex/core/test_suite/
 python3.6 -m unittest discover
@@ -166,3 +162,8 @@ Suspend Cerebral Cortex
 ```
 $ sudo vagrant suspend
 ```
+
+##FAQ
+XXX Add me
+1. System requirements
+2. Possible errors that can be encountered during the installation.
