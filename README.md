@@ -167,3 +167,15 @@ $ sudo vagrant suspend
 XXX Add me
 1. System requirements
 2. Possible errors that can be encountered during the installation.
+```
+Pulling grafana (grafana/grafana:latest)...
+Get https://registry-1.docker.io/v2/: dial tcp: lookup registry-1.docker.io on
+10.0.2.3:53: read udp 10.0.2.15:34893->10.0.2.3:53: i/o timeout
+```
+The above error is DockerCompose error, please restart initalizing the VM with
+the following command.
+```
+sudo vagrant up --provision
+```
+
+
