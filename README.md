@@ -84,6 +84,9 @@ cd /home/vagrant/CerebralCortex/cerebralcortex/core/test_suite/
 python3.6 -m unittest discover
 ```
 
+## Converting mCerebrum data format to CerebralCortex format
+#####TODO
+
 ## Importing data
 The
 `/home/vagrant/CerebralCortex-DockerCompose/cc_config_file\cc_vagrant_configuration.yml`
