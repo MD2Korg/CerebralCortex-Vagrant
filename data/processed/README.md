@@ -1,0 +1,1 @@
+This folder contains all the processed data in the form of python pickle objects.

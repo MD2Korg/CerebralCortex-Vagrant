@@ -1,0 +1,1 @@
+This folder contains all the raw data and metadata files uploaded from mCerebrum.
