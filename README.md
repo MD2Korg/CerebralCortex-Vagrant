@@ -73,7 +73,12 @@ CerebralCortex. All the paths are setup correctly to launch CerebralCortex.
 
 Copy data into the directory used in the configuraton file.
 ```
-/vagrant_data/raw/
+cd CerebralCortex-Vagrant (on your host machine)
+cd data/raw/
+
+Copy all data in raw folder. Folder shall contain a pair of files 
+(.gz file containing raw data, and .json file contain metadata of the file)
+All data shall be in one folder. This folder shall not contain other folders.  
 ```
 
 Import the data into CerebralCortex
