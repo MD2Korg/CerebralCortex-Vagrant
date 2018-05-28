@@ -94,7 +94,7 @@ sudo sh run_vagrant.sh
 ## Using Jupyter Notebook
 You may access Python Jupyter Notebook interface at:
 ```
-http://IP-ADDRESS/jupyterhub
+http://localhost/jupyterhub/hub/login
 ```
 
 Default user for Jupyter notebook is
