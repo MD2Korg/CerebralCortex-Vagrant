@@ -120,6 +120,7 @@ under development. Please keep an lookout on this page for updates to stable fea
 * gps_features
 * puffmarker
 * rr_interval
+
 Please have a look at the documentation for each of the obove features to get more insight into their functionality.
 
 `Simple_driver.ipynb` provides an example to execute features contained in the CerebralCortex-DataAnalysis repository.
