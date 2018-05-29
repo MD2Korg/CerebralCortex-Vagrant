@@ -91,6 +91,17 @@ sudo sh run_vagrant.sh
 
 ```
 
+## Grafana (Visualization)
+Login to Grafana at ```http://localhost/grafana``` to view:
+
+- Data Yield of MSHRV-LED, MSHRV-Accel, AutoSenseBLE
+- Geolocation
+- Beacon Counts
+- Phone/SMS/Notifications
+- Phone screen touches
+
+This is the sample dashboard, you may [create aditional dashboards](http://docs.grafana.org/guides/getting_started/) to visualize all of the sensors' raw data.
+
 ## Using Jupyter notebook
 You may access Python Jupyter Notebook interface at:
 ```
@@ -111,7 +122,17 @@ Click on Files tab
 Click on new and select pySpark (Spark 2.2.0) (Python 3) to create a new Python script.
 ```
 
-## Computing features
+### Interacting CerebralCortex using Jupyter
+The Jupyter notebook contains ```cc_demo/CerebralCortex_Basic_Usage.ipynb``` that has basic examples on how to:
+
+- Import CerebralCortex libraries and loading configurations
+- Get all users of a study
+- Get all streams of a user
+- Get days when a stream has data available
+- Get a stream's raw data and metadata
+- Plot stream raw data
+
+### Computing features
 The Jupyter notebook environment also contains the [CerebralCortex-DataAnalysis](https://github.com/MD2Korg/CerebralCortex-DataAnalysis) repository. 
 This repository contains the code to compute features on the data. The repository contains a number of features in the `core/feature` directory.
 The following features have been validated by us and that are what we believe is stable. The other features are still
@@ -148,6 +169,9 @@ sudo vagrant global-status
 Find the IMAGE-NAME. It would be required for next command
 sudo vagrant destroy  IMAGE-NAME
 ```
+
+
+
 ## Starting and stopping Cerebral Cortex
 When you are done using stop as
 PUT THIS IN THE END
