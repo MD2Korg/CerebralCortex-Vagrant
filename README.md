@@ -121,11 +121,17 @@ under development. Please keep an lookout on this page for updates to stable fea
 * puffmarker
 * rr_interval
 
+`Simple_driver.ipynb` provides an example to execute features contained in the CerebralCortex-DataAnalysis repository.
+
 Please have a look at the documentation for each of the obove features to get more insight into their functionality.
+
+#### Senors needed for the different features
 The `phone_features` and the `gpsfeature` can be computed from the data by your phone. The `puffmarker` and the `rr_interval`
 require the data from the wrist worn MotionsenseHRV sensor.
 
-`Simple_driver.ipynb` provides an example to execute features contained in the CerebralCortex-DataAnalysis repository.
+#### Feature dependencies
+To execute `gpsfeature`, `gps` must first be computed and then `gps_daily` must be computed.
+
  
 
 ## Increasing the available disk space in VM
