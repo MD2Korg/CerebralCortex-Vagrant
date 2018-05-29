@@ -112,19 +112,17 @@ Click on new and select pySpark (Spark 2.2.0) (Python 3) to create a new Python 
 ```
 
 ## Computing features
-The Jupyter notebook environment also contains the CerebralCortex-DataAnalysis repository. This repository 
-contains the code to compute features on the data. The repostory contains a number of features in `core/feature` directory.
-The following features have been validated by us and that are what we believe are stable. The other features are still
+The Jupyter notebook environment also contains the [CerebralCortex-DataAnalysis](https://github.com/MD2Korg/CerebralCortex-DataAnalysis) repository. 
+This repository contains the code to compute features on the data. The repository contains a number of features in the `core/feature` directory.
+The following features have been validated by us and that are what we believe is stable. The other features are still
 under development. Please keep an lookout on this page for updates to stable features.
 * phone_features
 * gps_features
 * puffmarker
 * rr_interval
-
 Please have a look at the documentation for each of the obove features to get more insight into their functionality.
 
 `Simple_driver.ipynb` provides an example to execute features contained in the CerebralCortex-DataAnalysis repository.
-
  
 
 ## Increasing the available disk space in VM
