@@ -1,6 +1,10 @@
 # Vagrant configuration for installing Cerebral Cortex
 This repository is ideal for developers and engineers to install the Cerebral Cortex framework.
 
+
+# Disclaimer
+Text from Shahin
+
 ## Linux: Ubuntu 17.10.
 
 1. To install Vagrant and dependencies
