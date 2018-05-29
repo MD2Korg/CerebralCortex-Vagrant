@@ -75,7 +75,7 @@ Download https://github.com/MD2Korg/CerebralCortex-Vagrant/archive/2.2.2.citizen
 ```
 $ cd CerebralCortex-Vagrant
 $ sudo vagrant up
-``
+```
 
 ## Common: 
 
