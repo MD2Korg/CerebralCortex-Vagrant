@@ -107,7 +107,8 @@ python3.6 -m unittest discover
 ```
 
 ## Importing data
-####TODO- UPDATE THIS, pluging the phone (MONOWAR)
+####TODO- how to copy data from mCerebrum (MONOWAR)
+
 The
 `/home/vagrant/CerebralCortex-DockerCompose/cc_config_file\cc_vagrant_configuration.yml`
 contains the parameter that stores the path from where data can be imported into 
