@@ -1,7 +1,11 @@
 # Vagrant configuration for installing Cerebral Cortex
 This repository is ideal for developers and engineers to install the Cerebral Cortex framework.
 
-This configuration has been tested on Ubuntu 17.10.
+
+# Disclaimer
+Text from Shahin
+
+## Linux: Ubuntu 17.10.
 
 1. To install Vagrant and dependencies
 ```
@@ -25,19 +29,57 @@ $ cd CerebralCortex-Vagrant
 $ sudo vagrant up
 ```
 
-4. Once the 3rd  step is complete, please execute the following command to
-   confirm that the installation steps were successful.
-```
-$ wget http://localhost/api/v1/auth/
---2017-12-21 21:14:20--  http://localhost/api/v1/auth/
-Resolving localhost (localhost)... 127.0.0.1
-Connecting to localhost (localhost)|127.0.0.1|:80... connected.
-HTTP request sent, awaiting response... 401 UNAUTHORIZED
+## Mac OS X:
 
-Username/Password Authentication Failed.
+1. To install Vagrant and dependencies
 ```
-The `Username/Password Authentication Failed` response confirms that the installation was successful and the system is online.
+$ brew cask install virtualbox
 
+$ brew cask install vagrant
+```
+
+2. Install the docker-compose plugin for Vagrant
+```
+$ vagrant plugin install vagrant-docker-compose
+$ vagrant plugin install vagrant-vbguest
+```
+Please consult [Vagrant Documentation](https://www.vagrantup.com/docs/)  if you face any installation errors for step 1 and 2. 
+
+3. Clone this CerebralCortex-Vagrant repository.  Note: Vagrant must be run as superuser to properly forward ports
+```
+$ git clone https://github.com/MD2KOrg/CerebralCortex-Vagrant -b 2.2.2.citizen_scientist
+$ cd CerebralCortex-Vagrant
+$ sudo vagrant up
+```
+
+## Windows 10:
+
+1. To install Vagrant and dependencies
+  - Download and install the Windows binary for VirtualBox https://www.virtualbox.org/wiki/Downloads
+  - Donwload and install the Windows binary for Vagrant https://www.vagrantup.com/downloads.html
+
+2. Install the docker-compose plugin for Vagrant
+```
+$ vagrant plugin install vagrant-docker-compose
+$ vagrant plugin install vagrant-vbguest
+```
+Please consult [Vagrant Documentation](https://www.vagrantup.com/docs/)  if you face any installation errors for step 1 and 2. 
+
+3. Download or clone this CerebralCortex-Vagrant repository.  
+```
+$ git clone https://github.com/MD2KOrg/CerebralCortex-Vagrant -b 2.2.2.citizen_scientist
+or
+Download https://github.com/MD2Korg/CerebralCortex-Vagrant/archive/2.2.2.citizen_scientist.zip and unzip
+```
+
+```
+$ cd CerebralCortex-Vagrant
+$ sudo vagrant up
+```
+
+## Common: 
+
+1. Confirm that everything started up correctly.
 
 The following commands lists the the status of all the services used by CerebralCortex.  Docker-Compose commands can be used to
 interact with Cerebral Cortex's containers.
@@ -191,19 +233,22 @@ Suspend Cerebral Cortex
 $ sudo vagrant suspend
 ```
 
-##FAQ
-XXX Add me
-1. System requirements
-2. Possible errors that can be encountered during the installation.
+## FAQ
+1. **System requirements**
+
+
+2. **Possible errors that can be encountered during the installation.**
 ```
 Pulling grafana (grafana/grafana:latest)...
 Get https://registry-1.docker.io/v2/: dial tcp: lookup registry-1.docker.io on
 10.0.2.3:53: read udp 10.0.2.15:34893->10.0.2.3:53: i/o timeout
 ```
-The above error is DockerCompose error, please restart initalizing the VM with
+The above error is DockerCompose error, please restart initializing the VM with
 the following command.
 ```
 sudo vagrant up --provision
 ```
-3. In general, for any errors encountred, use `sudo vagrant up --provision` to resume the installation.
+
+3. **Errors encountered during provisioning**
+Use `sudo vagrant up --provision` to resume the installation.
 
