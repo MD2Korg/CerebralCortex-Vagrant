@@ -3,7 +3,7 @@ This repository is ideal for developers and engineers to install and evaluate th
 
 
 # Disclaimer
-Text from Shahin
+This software is intended for informational and demonstration purposes only and is not designed to diagnose, treat, cure, prevent, or track disease or health states. No content provided in this software is intended to serve as a substitute for any kind of professional (e.g., medical) advice.
 
 ## Linux: Ubuntu 17.10.
 
@@ -11,8 +11,8 @@ Text from Shahin
 ```
 $ sudo apt install virtualbox virtualbox-dkms virtualbox-guest-additions-iso
 
-$ wget https://releases.hashicorp.com/vagrant/2.0.1/vagrant_2.0.1_x86_64.deb
-$ sudo dpkg -i vagrant_2.0.1_x86_64.deb
+$ wget https://releases.hashicorp.com/vagrant/2.1.1/vagrant_2.1.1_x86_64.deb
+$ sudo dpkg -i vagrant_2.1.1_x86_64.deb
 ```
 
 2. Install the docker-compose plugin for Vagrant
@@ -58,7 +58,7 @@ $ vagrant up
   - Download and install the Windows binary for VirtualBox https://www.virtualbox.org/wiki/Downloads
   - Donwload and install the Windows binary for Vagrant https://www.vagrantup.com/downloads.html
 
-2. Install the docker-compose plugin for Vagrant
+2. Install the docker-compose plugin for Vagrant by running the Windows commandline: `cmd.exe`
 ```
 $ vagrant plugin install vagrant-docker-compose
 $ vagrant plugin install vagrant-vbguest
@@ -67,11 +67,11 @@ Please consult [Vagrant Documentation](https://www.vagrantup.com/docs/)  if you 
 
 3. Download or clone this CerebralCortex-Vagrant repository.  
 ```
-$ git clone https://github.com/MD2KOrg/CerebralCortex-Vagrant -b 2.2.2.citizen_scientist
+$ git clone https://github.com/MD2KOrg/CerebralCortex-Vagrant -b 2.2.2.personal
 
 or
 
-Download https://github.com/MD2Korg/CerebralCortex-Vagrant/archive/2.2.2.citizen_scientist.zip and unzip
+Download https://github.com/MD2Korg/CerebralCortex-Vagrant/archive/2.2.2.personal.zip and unzip
 ```
 
 ```
@@ -79,16 +79,19 @@ $ cd CerebralCortex-Vagrant
 $ vagrant up
 ```
 
-## Common Installation Steps: 
+## Remaining Installation Steps: 
 
 1. Confirm that everything started up correctly.
 
 The following commands lists the the status of all the services used by CerebralCortex.  Docker-Compose commands can be used to
 interact with Cerebral Cortex's containers.
-1. sudo vagrant ssh
-2. cd CerebralCortex-DockerCompose/
-3. docker-compose ps
-The above command displays the status of all the services as shown below. 
+```
+$ vagrant ssh
+$ cd CerebralCortex-DockerCompose/
+$ docker-compose ps
+```
+
+The above commands display the status of all the services as shown below. 
 ```
       Name                    Command               State                    Ports                   
  ---------------------------------------------------------------------------------------------------
@@ -126,28 +129,41 @@ Copy all data in raw folder. Folder shall contain a pair of files
 All data shall be in one folder. This folder shall not contain other folders.  
 ```
 
+
+### Google Places API
+
+
+
 Import the data into CerebralCortex
 ```
+UNIFY THIS SET OF COMMANDS
 cd /home/vagrant/CerebralCortex-Scripts/data_replay/
-sudo sh scan_vagrant_dir.sh
+sh scan_vagrant_dir.sh
 
 cd /home/vagrant/CerebralCortex-KafkaStreamPreprocessor/
-sudo sh run_vagrant.sh
+sh run_vagrant.sh
 
 ```
 
-## Grafana (Visualization)
-Login to Grafana at ```http://localhost/grafana``` to view:
+# Visualizing and Analyzing Your Data
+
+## Visualization of data with Grafana
+Open this link in your web browser [http://localhost/grafana](http://localhost/grafana) to visualize your data
 
 - Data Yield of MSHRV-LED, MSHRV-Accel, AutoSenseBLE
 - Geolocation
-- Beacon Counts
 - Phone/SMS/Notifications
 - Phone screen touches
 
 This is the sample dashboard, you may [create aditional dashboards](http://docs.grafana.org/guides/getting_started/) to visualize all of the sensors' raw data.
 
-## Using Jupyter notebook
+
+## Analyzing your data with Jupyter Notebooks
+__Description needed__
+If you want to write code and scripts to analyze and process your data.
+Link to Getting started with Jupyter notebook tutorials
+
+  
 You may access Python Jupyter Notebook interface at:
 ```
 http://localhost/jupyterhub/hub/login
@@ -156,7 +172,7 @@ http://localhost/jupyterhub/hub/login
 Default user for Jupyter notebook is
 ```
 User Name: md2k
-Password: mdk2???
+Password: md2k
 ```
 Jupyter Notebook has cc_demo folder that contains sample script. Demo script shows some example on how to use CerebralCortex API to interact with data:
 
@@ -233,10 +249,14 @@ $ vagrant up
 
 
 ## FAQ
-1. **System requirements**
+
+1. **I'm stuck, where do I get help?**
+Please look for more information or ask for help here: [https://discuss.md2k.org/](https://discuss.md2k.org/)
+
+2. **System requirements**
 
 
-2. **Possible errors that can be encountered during the installation.**
+3. **Possible errors that can be encountered during the installation.**
 ```
 Pulling grafana (grafana/grafana:latest)...
 Get https://registry-1.docker.io/v2/: dial tcp: lookup registry-1.docker.io on
@@ -245,9 +265,9 @@ Get https://registry-1.docker.io/v2/: dial tcp: lookup registry-1.docker.io on
 The above error is DockerCompose error, please restart initializing the VM with
 the following command.
 ```
-sudo vagrant up --provision
+vagrant up --provision
 ```
 
-3. **Errors encountered during provisioning**
+4. **Errors encountered during provisioning**
 Use `sudo vagrant up --provision` to resume the installation.
 
