@@ -91,7 +91,7 @@ sudo sh run_vagrant.sh
 
 ```
 
-## Using Jupyter Notebook
+## Using Jupyter notebook
 You may access Python Jupyter Notebook interface at:
 ```
 http://localhost/jupyterhub/hub/login
@@ -104,8 +104,6 @@ Password: mdk2
 ```
 Jupyter Notebook has cc_demo folder that contains sample script. Demo script shows some example on how to use CerebralCortex API to interact with data:
 
-TODO: Anand, please add instruction on how to use DataAnalysis Demo
-
 To create new python script:
 ```
 Authenticate with user credentials
@@ -113,6 +111,21 @@ Click on Files tab
 Click on new and select pySpark (Spark 2.2.0) (Python 3) to create a new Python script.
 ```
 
+## Computing features
+The Jupyter notebook environment also contains the CerebralCortex-DataAnalysis repository. This repository 
+contains the code to compute features on the data. The repostory contains a number of features in `core/feature` directory.
+The following features have been validated by us and that are what we believe are stable. The other features are still
+under development. Please keep an lookout on this page for updates to stable features.
+* phone_features
+* gps_features
+* puffmarker
+* rr_interval
+
+Please have a look at the documentation for each of the obove features to get more insight into their functionality.
+
+`Simple_driver.ipynb` provides an example to execute features contained in the CerebralCortex-DataAnalysis repository.
+
+ 
 
 ## Increasing the available disk space in VM
 Edit the Vagrant file to add the following line.
@@ -161,3 +174,5 @@ the following command.
 ```
 sudo vagrant up --provision
 ```
+3. In general, for any errors encountred, use `sudo vagrant up --provision` to resume the installation.
+
