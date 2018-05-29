@@ -1,5 +1,5 @@
 # Vagrant configuration for installing Cerebral Cortex
-This repository is ideal for developers and engineers to install the Cerebral Cortex framework.
+This repository is ideal for developers and engineers to install and evaluate the Cerebral Cortex platform.
 
 
 # Disclaimer
@@ -17,16 +17,16 @@ $ sudo dpkg -i vagrant_2.0.1_x86_64.deb
 
 2. Install the docker-compose plugin for Vagrant
 ```
-$ sudo vagrant plugin install vagrant-docker-compose
-$ sudo vagrant plugin install vagrant-vbguest
+$ vagrant plugin install vagrant-docker-compose
+$ vagrant plugin install vagrant-vbguest
 ```
 Please consult [Vagrant Documentation](https://www.vagrantup.com/docs/)  if you face any installation errors for step 1 and 2. 
 
 3. Clone this CerebralCortex-Vagrant repository.  Note: Vagrant must be run as superuser to properly forward ports
 ```
-$ git clone https://github.com/MD2KOrg/CerebralCortex-Vagrant -b 2.2.2.citizen_scientist
+$ git clone https://github.com/MD2KOrg/CerebralCortex-Vagrant -b 2.2.2.personal
 $ cd CerebralCortex-Vagrant
-$ sudo vagrant up
+$ vagrant up
 ```
 
 ## Mac OS X:
@@ -47,9 +47,9 @@ Please consult [Vagrant Documentation](https://www.vagrantup.com/docs/)  if you 
 
 3. Clone this CerebralCortex-Vagrant repository.  Note: Vagrant must be run as superuser to properly forward ports
 ```
-$ git clone https://github.com/MD2KOrg/CerebralCortex-Vagrant -b 2.2.2.citizen_scientist
+$ git clone https://github.com/MD2KOrg/CerebralCortex-Vagrant -b 2.2.2.personal
 $ cd CerebralCortex-Vagrant
-$ sudo vagrant up
+$ vagrant up
 ```
 
 ## Windows 10:
@@ -68,16 +68,18 @@ Please consult [Vagrant Documentation](https://www.vagrantup.com/docs/)  if you 
 3. Download or clone this CerebralCortex-Vagrant repository.  
 ```
 $ git clone https://github.com/MD2KOrg/CerebralCortex-Vagrant -b 2.2.2.citizen_scientist
+
 or
+
 Download https://github.com/MD2Korg/CerebralCortex-Vagrant/archive/2.2.2.citizen_scientist.zip and unzip
 ```
 
 ```
 $ cd CerebralCortex-Vagrant
-$ sudo vagrant up
+$ vagrant up
 ```
 
-## Common: 
+## Common Installation Steps: 
 
 1. Confirm that everything started up correctly.
 
@@ -154,7 +156,7 @@ http://localhost/jupyterhub/hub/login
 Default user for Jupyter notebook is
 ```
 User Name: md2k
-Password: mdk2
+Password: mdk2???
 ```
 Jupyter Notebook has cc_demo folder that contains sample script. Demo script shows some example on how to use CerebralCortex API to interact with data:
 
@@ -208,31 +210,27 @@ This will mount a folder from the host machine in the VM.
 ## Removing Vagrant image of CC
 Run following commands if anything goes wrong and/or you want to uninstall CerebralCortex vagrant image
 ```
-sudo vagrant global-status
+vagrant global-status
 Find the IMAGE-NAME. It would be required for next command
-sudo vagrant destroy  IMAGE-NAME
+vagrant destroy  IMAGE-NAME
 ```
 
 
 
 ## Starting and stopping Cerebral Cortex
-When you are done using stop as
-PUT THIS IN THE END
-to resume
-Start Cerebral Cortex
-```
-$ sudo vagrant up
-```
-
 Stop Cerebral Cortex
 ```
-$ sudo vagrant halt
+$ vagrant halt
 ```
-
 Suspend Cerebral Cortex
 ```
-$ sudo vagrant suspend
+$ vagrant suspend
 ```
+Start Cerebral Cortex
+```
+$ vagrant up
+```
+
 
 ## FAQ
 1. **System requirements**
