@@ -5,145 +5,166 @@ This repository is ideal for developers and engineers to install and evaluate th
 # Disclaimer
 This software is intended for informational and demonstration purposes only and is not designed to diagnose, treat, cure, prevent, or track disease or health states. No content provided in this software is intended to serve as a substitute for any kind of professional (e.g., medical) advice.
 
-## Linux: Ubuntu 17.10.
+# Installation Instructions
+The Cerebral Cortex platform can installed and tested on any of the three major platforms: Linux, Mac OS X, and Windows.  The following instructions will walk you through installing the dependencies necessary to run Cerebral Cortex.
 
-1. To install Vagrant and dependencies
-```
-$ sudo apt install virtualbox virtualbox-dkms virtualbox-guest-additions-iso
+## Linux: (Ubuntu 17.10)
+These steps are preformed from the command line and do not need a graphical interface.
 
-$ wget https://releases.hashicorp.com/vagrant/2.1.1/vagrant_2.1.1_x86_64.deb
-$ sudo dpkg -i vagrant_2.1.1_x86_64.deb
-```
+1. Install VirtualBox and Vagrant
+  ```
+  $ sudo apt install virtualbox virtualbox-dkms virtualbox-guest-additions-iso
+  $ wget https://releases.hashicorp.com/vagrant/2.1.1/vagrant_2.1.1_x86_64.deb
+  $ sudo dpkg -i vagrant_2.1.1_x86_64.deb
+  ```
 
 2. Install the docker-compose plugin for Vagrant
-```
-$ vagrant plugin install vagrant-docker-compose
-$ vagrant plugin install vagrant-vbguest
-```
-Please consult [Vagrant Documentation](https://www.vagrantup.com/docs/)  if you face any installation errors for step 1 and 2. 
 
-3. Clone this CerebralCortex-Vagrant repository.  Note: Vagrant must be run as superuser to properly forward ports
-```
-$ git clone https://github.com/MD2KOrg/CerebralCortex-Vagrant -b 2.2.2.personal
-$ cd CerebralCortex-Vagrant
-$ vagrant up
-```
+  ```
+  $ vagrant plugin install vagrant-docker-compose
+  $ vagrant plugin install vagrant-vbguest
+  ```
+  Please consult [Vagrant Documentation](https://www.vagrantup.com/docs/)  if you face any installation errors for step 1 and 2.
+
+3. Clone this CerebralCortex-Vagrant repository.
+  ```
+  $ git clone https://github.com/MD2KOrg/CerebralCortex-Vagrant -b 2.2.2.personal
+  $ cd CerebralCortex-Vagrant
+  $ vagrant up
+  ```
 
 ## Mac OS X:
+These steps are preformed from the command line with the support of [Homebrew](https://brew.sh/) and do not need a graphical interface.
 
-1. To install Vagrant and dependencies
-```
-$ brew cask install virtualbox
-
-$ brew cask install vagrant
-```
+1. Install VirtualBox and Vagrant
+  ```
+  $ brew cask install virtualbox
+  $ brew cask install vagrant
+  ```
 
 2. Install the docker-compose plugin for Vagrant
-```
-$ vagrant plugin install vagrant-docker-compose
-$ vagrant plugin install vagrant-vbguest
-```
-Please consult [Vagrant Documentation](https://www.vagrantup.com/docs/)  if you face any installation errors for step 1 and 2. 
+  ```
+  $ vagrant plugin install vagrant-docker-compose
+  $ vagrant plugin install vagrant-vbguest
+  ```
+  Please consult [Vagrant Documentation](https://www.vagrantup.com/docs/)  if you face any installation errors for step 1 and 2.
 
-3. Clone this CerebralCortex-Vagrant repository.  Note: Vagrant must be run as superuser to properly forward ports
-```
-$ git clone https://github.com/MD2KOrg/CerebralCortex-Vagrant -b 2.2.2.personal
-$ cd CerebralCortex-Vagrant
-$ vagrant up
-```
+3. Clone this CerebralCortex-Vagrant repository.
+  ```
+  $ git clone https://github.com/MD2KOrg/CerebralCortex-Vagrant -b 2.2.2.personal
+  $ cd CerebralCortex-Vagrant
+  $ vagrant up
+  ```
 
 ## Windows 10:
 
-1. To install Vagrant and dependencies
-  - Download and install the Windows binary for VirtualBox https://www.virtualbox.org/wiki/Downloads
-  - Donwload and install the Windows binary for Vagrant https://www.vagrantup.com/downloads.html
+1. Install VirtualBox and Vagrant
+  - Download and install the Windows binary for VirtualBox: [https://www.virtualbox.org/wiki/Downloads](https://www.virtualbox.org/wiki/Downloads)
+  - Download and install the Windows binary for Vagrant: [https://www.vagrantup.com/downloads.html](https://www.vagrantup.com/downloads.html)
 
-2. Install the docker-compose plugin for Vagrant by running the Windows commandline: `cmd.exe`
-```
-$ vagrant plugin install vagrant-docker-compose
-$ vagrant plugin install vagrant-vbguest
-```
-Please consult [Vagrant Documentation](https://www.vagrantup.com/docs/)  if you face any installation errors for step 1 and 2. 
+2. Install the docker-compose plugin for Vagrant by running the Windows command line: `cmd.exe`
+  ```
+  $ vagrant plugin install vagrant-docker-compose
+  $ vagrant plugin install vagrant-vbguest
+  ```
+  Please consult [Vagrant Documentation](https://www.vagrantup.com/docs/)  if you face any installation errors for step 1 and 2.
 
 3. Download or clone this CerebralCortex-Vagrant repository.  
-```
-$ git clone https://github.com/MD2KOrg/CerebralCortex-Vagrant -b 2.2.2.personal
+  Download location: [https://github.com/MD2Korg/CerebralCortex-Vagrant/archive/2.2.2.personal.zip](https://github.com/MD2Korg/CerebralCortex-Vagrant/archive/2.2.2.personal.zip)
 
-or
+  or clone from Git if installed
+  ```
+  $ git clone https://github.com/MD2KOrg/CerebralCortex-Vagrant -b 2.2.2.personal
+  ```
 
-Download https://github.com/MD2Korg/CerebralCortex-Vagrant/archive/2.2.2.personal.zip and unzip
-```
+  Finally, start the installation process.
+  ```
+  $ cd CerebralCortex-Vagrant
+  $ vagrant up
+  ```
 
-```
-$ cd CerebralCortex-Vagrant
-$ vagrant up
-```
-
-## Remaining Installation Steps: 
+## Remaining Installation Steps Common to All Operating Systems:
 
 1. Confirm that everything started up correctly.
 
-The following commands lists the the status of all the services used by CerebralCortex.  Docker-Compose commands can be used to
-interact with Cerebral Cortex's containers.
-```
-$ vagrant ssh
-$ cd CerebralCortex-DockerCompose/
-$ docker-compose ps
-```
+  The following commands lists the the status of all the services used by CerebralCortex.  Docker-Compose commands can be used to
+  interact with Cerebral Cortex's containers.
+  ```
+  $ vagrant ssh
+  $ cd CerebralCortex-DockerCompose/
+  $ docker-compose ps
+  ```
 
-The above commands display the status of all the services as shown below. 
-```
-      Name                    Command               State                    Ports                   
- ---------------------------------------------------------------------------------------------------
- md2k-api-server   /entrypoint.sh /start.sh         Up      443/tcp, 80/tcp                          
- md2k-grafana      /run.sh                          Up      0.0.0.0:3000->3000/tcp                   
- md2k-influxdb     /entrypoint.sh influxd           Up      0.0.0.0:8086->8086/tcp                   
- md2k-jupyterhub   jupyterhub --no-ssl --conf ...   Up      0.0.0.0:32771->8000/tcp                  
- md2k-minio        /usr/bin/docker-entrypoint ...   Up      0.0.0.0:9000->9000/tcp                   
- md2k-mysql        docker-entrypoint.sh mysqld      Up      0.0.0.0:3306->3306/tcp                   
- md2k-nginx        nginx -g daemon off;             Up      0.0.0.0:443->443/tcp, 0.0.0.0:80->80/tcp
-```
+  The above commands display the status of all the services as shown below.
+  ```
+        Name                    Command               State                    Ports                   
+   ---------------------------------------------------------------------------------------------------
+   md2k-api-server   /entrypoint.sh /start.sh         Up      443/tcp, 80/tcp                          
+   md2k-grafana      /run.sh                          Up      0.0.0.0:3000->3000/tcp                   
+   md2k-influxdb     /entrypoint.sh influxd           Up      0.0.0.0:8086->8086/tcp                   
+   md2k-jupyterhub   jupyterhub --no-ssl --conf ...   Up      0.0.0.0:32771->8000/tcp                  
+   md2k-minio        /usr/bin/docker-entrypoint ...   Up      0.0.0.0:9000->9000/tcp                   
+   md2k-mysql        docker-entrypoint.sh mysqld      Up      0.0.0.0:3306->3306/tcp                   
+   md2k-nginx        nginx -g daemon off;             Up      0.0.0.0:443->443/tcp, 0.0.0.0:80->80/tcp
+  ```
 
-## Running test cases
-Run system level test-cases to make sure all the things are setup properly. System level test case will generate some sample data, process it using CerebralCortex, store it, retrieve it and verify results with predefined test values.
-```
-cd /home/vagrant/CerebralCortex/cerebralcortex/core/test_suite/
-python3.6 -m unittest discover
-```
+2. Optional: Run Cerebral Cortex Test Cases
+  You can run system level test-cases to make sure all components are setup and running properly. System level test cases will generate some sample data, process it using Cerebral Cortex, store it, retrieve it and verify results with predefined test values.
+  ```
+  $ vagrant ssh
+  $ cd /home/vagrant/CerebralCortex/cerebralcortex/core/test_suite/
+  $ python3.6 -m unittest discover
+  ```
 
-## Importing data
-####TODO- how to copy data from mCerebrum (MONOWAR)
+## Importing and Analyzing Your Data
 
-The
-`/home/vagrant/CerebralCortex-DockerCompose/cc_config_file\cc_vagrant_configuration.yml`
-contains the parameter that stores the path from where data can be imported into 
-CerebralCortex. All the paths are setup correctly to launch CerebralCortex.
+### Downloading mCerebrum data to your computer
 
-Copy data into the directory used in the configuraton file.
-```
-cd CerebralCortex-Vagrant (on your host machine)
-cd data/raw/
+1. **Important**: You must first stop data collection before connecting the smartphone to a computer.
 
-Copy all data in raw folder. Folder shall contain a pair of files 
-(.gz file containing raw data, and .json file contain metadata of the file)
-All data shall be in one folder. This folder shall not contain other folders.  
-```
+2. Connect the smartphone to a PC using the charging cable.
 
+  ![mCerebrum Computer Interface](imgs/phone2computer.png)
 
-### Google Places API
+3. Using the computer, navigate to the phone’s org.md2k.mCerebrum folder. `Phone > Android > data > org.md2k.mCerebrum > files > 636fcc1f-8966-4e63-a9df-0cbaa6e9296c`
 
+  ![mCerebrum Data Folder](imgs/mCerebrum_data_folder.png)
+
+4. Copy all of the `*.gz` and `*.json` files to `PATH/TO/CerebralCortex-Vagrant/data/raw`
+
+  ![mCerebrum to Cerebral Cortex](imgs/mCerebrum_to_cerebral_cortex.png)
+
+5. Disconnect the smartphone from the computer
 
 
-Import the data into CerebralCortex
-```
-UNIFY THIS SET OF COMMANDS
-cd /home/vagrant/CerebralCortex-Scripts/data_replay/
-sh scan_vagrant_dir.sh
+### Importing and processing your data
 
-cd /home/vagrant/CerebralCortex-KafkaStreamPreprocessor/
-sh run_vagrant.sh
+Some of the features that can be computed rely on the Google Places API and if you would like to include this optional capability, the following steps are required to configure this option.
 
-```
+#### Enable Google Places API
+
+1. Navigate to [https://developers.google.com/](https://developers.google.com/) and sign in with a valid Google account.
+
+2. Navigate to the places web-service `Get API Key` page [https://developers.google.com/places/web-service/get-api-key](https://developers.google.com/places/web-service/get-api-key)
+
+3. Follow the steps to `Get A Key` for the __standard Places API for Web__ option. By default, the key is good for 1000 queries/day and can be increased to 150k/day by verifying your identity with a credit card.
+
+4. Run the following command to enable the location-aware features in the Cerebral Cortex pipeline.
+
+  ```
+  $ vagrant ssh
+  $ enable_google_places.sh COPY_KEY_HERE
+  ```
+
+#### Import and analyze the data
+Data can now be processed, which can take some time due to the CPU intensive nature of computing all the features and markers.
+  ```
+  $ vagrant ssh
+  $ ingest_and_analyze.sh
+  ```
+
+A large number of console logs will appear on the screen indicating what the system is currently doing.  It will first preprocess the data files you copied from the mCerebrum app into a format that Cerebral Cortex will ingest.  Next, the ingestion pipeline will scan and import this data into Cerebral Cortex's internal data stores.  Finally, it will run a pre-specified set of feature computations based on the smartphone sensors streams.
+
 
 # Visualizing and Analyzing Your Data
 
@@ -163,7 +184,7 @@ __Description needed__
 If you want to write code and scripts to analyze and process your data.
 Link to Getting started with Jupyter notebook tutorials
 
-  
+
 You may access Python Jupyter Notebook interface at:
 ```
 http://localhost/jupyterhub/hub/login
@@ -194,7 +215,7 @@ The Jupyter notebook contains ```cc_demo/CerebralCortex_Basic_Usage.ipynb``` tha
 - Plot stream raw data
 
 ### Computing features
-The Jupyter notebook environment also contains the [CerebralCortex-DataAnalysis](https://github.com/MD2Korg/CerebralCortex-DataAnalysis) repository. 
+The Jupyter notebook environment also contains the [CerebralCortex-DataAnalysis](https://github.com/MD2Korg/CerebralCortex-DataAnalysis) repository.
 This repository contains the code to compute features on the data. The repository contains a number of features in the `core/feature` directory.
 The following features have been validated by us and that are what we believe is stable. The other features are still
 under development. Please keep an lookout on this page for updates to stable features.
@@ -214,14 +235,14 @@ require the data from the wrist worn MotionsenseHRV sensor.
 #### Feature dependencies
 To execute `gpsfeature`, `gps` must first be computed and then `gps_daily` must be computed.
 
- 
+
 
 ## Increasing the available disk space in VM
 Edit the Vagrant file to add the following line.
 ```
 config.vm.synced_folder "<host_machine_folder_path>", "<foder_path_in_VM>"
 ```
-This will mount a folder from the host machine in the VM. 
+This will mount a folder from the host machine in the VM.
 
 ## Removing Vagrant image of CC
 Run following commands if anything goes wrong and/or you want to uninstall CerebralCortex vagrant image
@@ -270,4 +291,3 @@ vagrant up --provision
 
 4. **Errors encountered during provisioning**
 Use `sudo vagrant up --provision` to resume the installation.
-
