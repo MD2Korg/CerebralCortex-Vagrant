@@ -117,11 +117,13 @@ This repository contains the code to compute features on the data. The repositor
 The following features have been validated by us and that are what we believe is stable. The other features are still
 under development. Please keep an lookout on this page for updates to stable features.
 * phone_features
-* gps_features
+* gpsfeature
 * puffmarker
 * rr_interval
 
 Please have a look at the documentation for each of the obove features to get more insight into their functionality.
+The `phone_features` and the `gpsfeature` can be computed from the data by your phone. The `puffmarker` and the `rr_interval`
+require the data from the wrist worn MotionsenseHRV sensor.
 
 `Simple_driver.ipynb` provides an example to execute features contained in the CerebralCortex-DataAnalysis repository.
  
