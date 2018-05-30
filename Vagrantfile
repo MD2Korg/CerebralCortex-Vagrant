@@ -24,7 +24,7 @@ Vagrant.configure("2") do |config|
   # within the machine from a port on the host machine. In the example below,
   # accessing "localhost:8080" will access port 80 on the guest machine.
   # NOTE: This will enable public access to the opened port
-  config.vm.network "forwarded_port", guest: 80, host: 80
+  config.vm.network "forwarded_port", guest: 80, host: 8080
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine and only allow access
@@ -51,7 +51,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.hostname = "cerebralcortex"
 
-  
+
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
   # Example for VirtualBox:
@@ -72,7 +72,7 @@ Vagrant.configure("2") do |config|
 
   # Force CentOS/7 to turn on the second ethernet interface
   config.vm.provision "shell", inline: "ifup eth1", run: "always"
-  
+
   # Enable provisioning with a shell script. Additional provisioners such as
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
@@ -85,17 +85,17 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: <<-SHELL
     yum install -y git vim
     rm -rf CerebralCortex*
-    git clone https://github.com/MD2Korg/CerebralCortex-DockerCompose -b 2.2.2.citizen_scientist
-    git clone https://github.com/MD2Korg/CerebralCortex -b 2.2.2
-    git clone https://github.com/MD2Korg/CerebralCortex-APIServer -b 2.2.2 
-    git clone https://github.com/MD2Korg/CerebralCortex-KafkaStreamPreprocessor.git -b 2.2.2
-    git clone https://github.com/MD2Korg/CerebralCortex-Scripts.git -b 2.2.2
+    git clone https://github.com/MD2Korg/CerebralCortex-DockerCompose -b personal
+    git clone https://github.com/MD2Korg/CerebralCortex -b 2.2.3
+    # git clone https://github.com/MD2Korg/CerebralCortex-APIServer -b 2.2.2
+    git clone https://github.com/MD2Korg/CerebralCortex-KafkaStreamPreprocessor.git -b 2.2.3
+    git clone https://github.com/MD2Korg/CerebralCortex-Scripts.git -b 2.2.3
   SHELL
 
 # Installing python3 and Apache Spark
   config.vm.provision "shell", inline: <<-SHELL
     yum install -y https://centos7.iuscommunity.org/ius-release.rpm
-    yum install -y python36u python36u-devel python36u-pip java-1.8.0-openjdk libev libev-devel gcc wget 
+    yum install -y python36u python36u-devel python36u-pip java-1.8.0-openjdk libev libev-devel gcc wget
 
     ln -s /usr/lib/jvm/java-1.8* /usr/lib/jvm/java
 
@@ -104,11 +104,11 @@ Vagrant.configure("2") do |config|
     ln -s /usr/local/spark-2.2.0-bin-hadoop2.7 /usr/local/spark
     pip3.6 install -U wheel
     sed -i '/cassandra-driver==3.12.0/d' CerebralCortex/requirements.txt
-    pip3.6 install -r CerebralCortex/requirements.txt 
-    pip3.6 install -r CerebralCortex-KafkaStreamPreprocessor/requirements.txt 
+    pip3.6 install -r CerebralCortex/requirements.txt
+    pip3.6 install -r CerebralCortex-KafkaStreamPreprocessor/requirements.txt
 
   SHELL
-  
+
 
 # Setting the log4j properties for Spark
   config.vm.provision "shell", inline: <<-SHELL
@@ -137,7 +137,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision :docker
   config.vm.provision :docker_compose, yml: "/home/vagrant/CerebralCortex-DockerCompose/docker-compose.yml", env: { "MACHINE_IP" => "#{machine_ip}" }, run: "always"
 
-  
+
   # creating default database in influxdb
   config.vm.provision "shell", inline: <<-SHELL
     curl -G http://localhost:8086/query --data-urlencode "q=CREATE DATABASE cerebralcortex_raw"
@@ -155,9 +155,8 @@ Vagrant.configure("2") do |config|
     cp /vagrant/hosts /etc/hosts
     cd /home/vagrant/
     chown vagrant . -R
-    chgrp vagrant . -R 
+    chgrp vagrant . -R
     service rsyslog restart
   SHELL
 
 end
-
