@@ -28,7 +28,7 @@ These steps are preformed from the command line and do not need a graphical inte
 
 3. Clone this CerebralCortex-Vagrant repository.
   ```bash
-  git clone https://github.com/MD2KOrg/CerebralCortex-Vagrant -b 2.2.2.personal
+  git clone https://github.com/MD2KOrg/CerebralCortex-Vagrant -b personal
   cd CerebralCortex-Vagrant
   vagrant up
   ```
@@ -51,7 +51,7 @@ These steps are preformed from the command line with the support of [Homebrew](h
 
 3. Clone this CerebralCortex-Vagrant repository.
   ```bash
-  git clone https://github.com/MD2KOrg/CerebralCortex-Vagrant -b 2.2.2.personal
+  git clone https://github.com/MD2KOrg/CerebralCortex-Vagrant -b personal
   cd CerebralCortex-Vagrant
   vagrant up
   ```
@@ -70,11 +70,11 @@ These steps are preformed from the command line with the support of [Homebrew](h
   Please consult [Vagrant Documentation](https://www.vagrantup.com/docs/)  if you face any installation errors for step 1 and 2.
 
 3. Download or clone this CerebralCortex-Vagrant repository.  
-  Download location: [https://github.com/MD2Korg/CerebralCortex-Vagrant/archive/2.2.2.personal.zip](https://github.com/MD2Korg/CerebralCortex-Vagrant/archive/2.2.2.personal.zip)
+  Download location: [https://github.com/MD2Korg/CerebralCortex-Vagrant/archive/personal.zip](https://github.com/MD2Korg/CerebralCortex-Vagrant/archive/personal.zip)
 
   or clone from Git if installed
   ```bash
-  git clone https://github.com/MD2KOrg/CerebralCortex-Vagrant -b 2.2.2.personal
+  git clone https://github.com/MD2KOrg/CerebralCortex-Vagrant -b personal
   ```
 
   Finally, start the installation process.
