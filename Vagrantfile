@@ -90,6 +90,7 @@ Vagrant.configure("2") do |config|
     # git clone https://github.com/MD2Korg/CerebralCortex-APIServer -b 2.2.2
     git clone https://github.com/MD2Korg/CerebralCortex-KafkaStreamPreprocessor.git -b 2.2.3
     git clone https://github.com/MD2Korg/CerebralCortex-Scripts.git -b 2.2.3
+    git clone https://github.com/MD2Korg/CerebralCortex-DataAnalysis -b personal
   SHELL
 
 # Installing python3 and Apache Spark
