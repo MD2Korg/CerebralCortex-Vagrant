@@ -1,1 +1,0 @@
-{"rsync":{"/vagrant":{"type":"rsync","guestpath":"/vagrant","hostpath":"/Users/hnat/md2k/software/CerebralCortex-Vagrant","disabled":false,"__vagrantfile":true,"owner":"vagrant","group":"vagrant"}},"virtualbox":{"/vagrant_data":{"guestpath":"/vagrant_data","hostpath":"/Users/hnat/md2k/software/CerebralCortex-Vagrant/vagrant_data","disabled":false,"__vagrantfile":true}}}
