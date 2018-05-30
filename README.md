@@ -12,48 +12,48 @@ The Cerebral Cortex platform can installed and tested on any of the three major 
 These steps are preformed from the command line and do not need a graphical interface.
 
 1. Install VirtualBox and Vagrant
-  ```
-  $ sudo apt install virtualbox virtualbox-dkms virtualbox-guest-additions-iso
-  $ wget https://releases.hashicorp.com/vagrant/2.1.1/vagrant_2.1.1_x86_64.deb
-  $ sudo dpkg -i vagrant_2.1.1_x86_64.deb
+  ```bash
+  sudo apt install virtualbox virtualbox-dkms virtualbox-guest-additions-iso
+  wget https://releases.hashicorp.com/vagrant/2.1.1/vagrant_2.1.1_x86_64.deb
+  sudo dpkg -i vagrant_2.1.1_x86_64.deb
   ```
 
 2. Install the docker-compose plugin for Vagrant
 
-  ```
-  $ vagrant plugin install vagrant-docker-compose
-  $ vagrant plugin install vagrant-vbguest
+  ```bash
+  vagrant plugin install vagrant-docker-compose
+  vagrant plugin install vagrant-vbguest
   ```
   Please consult [Vagrant Documentation](https://www.vagrantup.com/docs/)  if you face any installation errors for step 1 and 2.
 
 3. Clone this CerebralCortex-Vagrant repository.
-  ```
-  $ git clone https://github.com/MD2KOrg/CerebralCortex-Vagrant -b 2.2.2.personal
-  $ cd CerebralCortex-Vagrant
-  $ vagrant up
+  ```bash
+  git clone https://github.com/MD2KOrg/CerebralCortex-Vagrant -b 2.2.2.personal
+  cd CerebralCortex-Vagrant
+  vagrant up
   ```
 
 ## Mac OS X:
 These steps are preformed from the command line with the support of [Homebrew](https://brew.sh/) and do not need a graphical interface.
 
 1. Install VirtualBox and Vagrant
-  ```
-  $ brew cask install virtualbox
-  $ brew cask install vagrant
+  ```bash
+  brew cask install virtualbox
+  brew cask install vagrant
   ```
 
 2. Install the docker-compose plugin for Vagrant
-  ```
-  $ vagrant plugin install vagrant-docker-compose
-  $ vagrant plugin install vagrant-vbguest
+  ```bash
+  vagrant plugin install vagrant-docker-compose
+  vagrant plugin install vagrant-vbguest
   ```
   Please consult [Vagrant Documentation](https://www.vagrantup.com/docs/)  if you face any installation errors for step 1 and 2.
 
 3. Clone this CerebralCortex-Vagrant repository.
-  ```
-  $ git clone https://github.com/MD2KOrg/CerebralCortex-Vagrant -b 2.2.2.personal
-  $ cd CerebralCortex-Vagrant
-  $ vagrant up
+  ```bash
+  git clone https://github.com/MD2KOrg/CerebralCortex-Vagrant -b 2.2.2.personal
+  cd CerebralCortex-Vagrant
+  vagrant up
   ```
 
 ## Windows 10:
@@ -63,9 +63,9 @@ These steps are preformed from the command line with the support of [Homebrew](h
   - Download and install the Windows binary for Vagrant: [https://www.vagrantup.com/downloads.html](https://www.vagrantup.com/downloads.html)
 
 2. Install the docker-compose plugin for Vagrant by running the Windows command line: `cmd.exe`
-  ```
-  $ vagrant plugin install vagrant-docker-compose
-  $ vagrant plugin install vagrant-vbguest
+  ```bash
+  vagrant plugin install vagrant-docker-compose
+  vagrant plugin install vagrant-vbguest
   ```
   Please consult [Vagrant Documentation](https://www.vagrantup.com/docs/)  if you face any installation errors for step 1 and 2.
 
@@ -73,24 +73,25 @@ These steps are preformed from the command line with the support of [Homebrew](h
   Download location: [https://github.com/MD2Korg/CerebralCortex-Vagrant/archive/2.2.2.personal.zip](https://github.com/MD2Korg/CerebralCortex-Vagrant/archive/2.2.2.personal.zip)
 
   or clone from Git if installed
-  ```
-  $ git clone https://github.com/MD2KOrg/CerebralCortex-Vagrant -b 2.2.2.personal
+  ```bash
+  git clone https://github.com/MD2KOrg/CerebralCortex-Vagrant -b 2.2.2.personal
   ```
 
   Finally, start the installation process.
-  ```
-  $ cd CerebralCortex-Vagrant
-  $ vagrant up
+  ```bash
+  cd CerebralCortex-Vagrant
+  vagrant up
   ```
 
 ## Remaining Installation Steps Common to All Operating Systems:
 
 Confirm that everything started up correctly. The following commands lists the the status of all the services used by CerebralCortex.  Docker-Compose commands can be used to
 interact with Cerebral Cortex's containers.
-```
-$ vagrant ssh
-$ cd CerebralCortex-DockerCompose/
-$ docker-compose ps
+
+```bash
+vagrant ssh
+cd CerebralCortex-DockerCompose/
+docker-compose ps
 ```
 
 The above commands display the status of all the services as shown below.
@@ -142,16 +143,16 @@ Some of the features that can be computed rely on the Google Places API and if y
 
 4. Run the following command to enable the location-aware features in the Cerebral Cortex pipeline.
 
-  ```
-  $ vagrant ssh
-  $ enable_google_places.sh COPY_KEY_HERE
+  ```bash
+  vagrant ssh
+  enable_google_places.sh COPY_KEY_HERE
   ```
 
 #### Import and analyze the data
 Data can now be processed, which can take some time due to the CPU intensive nature of computing all the features and markers.
-  ```
-  $ vagrant ssh
-  $ ingest_and_analyze.sh
+  ```bash
+  vagrant ssh
+  ingest_and_analyze.sh
   ```
 
 A large number of console logs will appear on the screen indicating what the system is currently doing.  It will first preprocess the data files you copied from the mCerebrum app into a format that Cerebral Cortex will ingest.  Next, the ingestion pipeline will scan and import this data into Cerebral Cortex's internal data stores.  Finally, it will run a pre-specified set of feature computations based on the smartphone sensors streams.
@@ -269,16 +270,18 @@ vagrant destroy  IMAGE-NAME
 
 ## Starting and stopping Cerebral Cortex
 Stop Cerebral Cortex
+```bash
+vagrant halt
 ```
-$ vagrant halt
-```
+
 Suspend Cerebral Cortex
+```bash
+vagrant suspend
 ```
-$ vagrant suspend
-```
+
 Start Cerebral Cortex
-```
-$ vagrant up
+```bash
+vagrant up
 ```
 
 
@@ -290,6 +293,12 @@ $ vagrant up
 
 2. **System requirements**
 
-4. **Errors encountered during provisioning**
+  These are the minimum recommended system requirements for running Cerebral Cortex.
+  - 2-4 core CPU
+  - 16+ GB RAM
+  - 10GB disk + enough to support the total data collection from mCerebrum
+
+
+3. **Errors encountered during provisioning**
 
   Use `vagrant up --provision` to resume the installation.
