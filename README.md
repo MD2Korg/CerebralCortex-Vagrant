@@ -85,36 +85,27 @@ These steps are preformed from the command line with the support of [Homebrew](h
 
 ## Remaining Installation Steps Common to All Operating Systems:
 
-1. Confirm that everything started up correctly.
+Confirm that everything started up correctly. The following commands lists the the status of all the services used by CerebralCortex.  Docker-Compose commands can be used to
+interact with Cerebral Cortex's containers.
+```
+$ vagrant ssh
+$ cd CerebralCortex-DockerCompose/
+$ docker-compose ps
+```
 
-  The following commands lists the the status of all the services used by CerebralCortex.  Docker-Compose commands can be used to
-  interact with Cerebral Cortex's containers.
-  ```
-  $ vagrant ssh
-  $ cd CerebralCortex-DockerCompose/
-  $ docker-compose ps
-  ```
+The above commands display the status of all the services as shown below.
+```
+      Name                    Command               State                    Ports                   
+ ---------------------------------------------------------------------------------------------------
+ md2k-api-server   /entrypoint.sh /start.sh         Up      443/tcp, 80/tcp                          
+ md2k-grafana      /run.sh                          Up      0.0.0.0:3000->3000/tcp                   
+ md2k-influxdb     /entrypoint.sh influxd           Up      0.0.0.0:8086->8086/tcp                   
+ md2k-jupyterhub   jupyterhub --no-ssl --conf ...   Up      0.0.0.0:32771->8000/tcp                  
+ md2k-minio        /usr/bin/docker-entrypoint ...   Up      0.0.0.0:9000->9000/tcp                   
+ md2k-mysql        docker-entrypoint.sh mysqld      Up      0.0.0.0:3306->3306/tcp                   
+ md2k-nginx        nginx -g daemon off;             Up      0.0.0.0:443->443/tcp, 0.0.0.0:80->80/tcp
+```
 
-  The above commands display the status of all the services as shown below.
-  ```
-        Name                    Command               State                    Ports                   
-   ---------------------------------------------------------------------------------------------------
-   md2k-api-server   /entrypoint.sh /start.sh         Up      443/tcp, 80/tcp                          
-   md2k-grafana      /run.sh                          Up      0.0.0.0:3000->3000/tcp                   
-   md2k-influxdb     /entrypoint.sh influxd           Up      0.0.0.0:8086->8086/tcp                   
-   md2k-jupyterhub   jupyterhub --no-ssl --conf ...   Up      0.0.0.0:32771->8000/tcp                  
-   md2k-minio        /usr/bin/docker-entrypoint ...   Up      0.0.0.0:9000->9000/tcp                   
-   md2k-mysql        docker-entrypoint.sh mysqld      Up      0.0.0.0:3306->3306/tcp                   
-   md2k-nginx        nginx -g daemon off;             Up      0.0.0.0:443->443/tcp, 0.0.0.0:80->80/tcp
-  ```
-
-2. Optional: Run Cerebral Cortex Test Cases
-  You can run system level test-cases to make sure all components are setup and running properly. System level test cases will generate some sample data, process it using Cerebral Cortex, store it, retrieve it and verify results with predefined test values.
-  ```
-  $ vagrant ssh
-  $ cd /home/vagrant/CerebralCortex/cerebralcortex/core/test_suite/
-  $ python3.6 -m unittest discover
-  ```
 
 ## Importing and Analyzing Your Data
 
@@ -167,16 +158,34 @@ A large number of console logs will appear on the screen indicating what the sys
 
 
 # Visualizing and Analyzing Your Data
+Cerebral Cortex provides two mechanisms to visualize and analyze your data.  First, a user-centric interface is provided by the [Grafana](https://grafana.com/) project which can be utilized to plot and explore Cerebral Cortex data streams.  Second, a code-centric interface is provided by the [Jupyter](http://jupyter.org/) project and allows a user to write Python3 code to interact with the Cerebral Cortex kernel.
 
 ## Visualization of data with Grafana
-Open this link in your web browser [http://localhost/grafana](http://localhost/grafana) to visualize your data
+Open this link in your web browser [http://localhost:8080/grafana](http://localhost:8080/grafana) to visualize your data.  
 
+1. The default login and password are both `admin`.  
+
+  ![Grafana](imgs/grafana.png)
+
+
+2. Once you authenticate, you will see the following screen.
+
+  ![Grafana Main](imgs/grafana-main.png)
+
+3. Select the `Home` dropdown at the top left of the screen and choose the **MD2K_DEMO** dashboard.
+
+  ![Grafana Visualization](imgs/grafana-main-dashboard.png)
+
+
+This is a pre-built visualization that provides some examples of the various types of displays that are possible.  
+
+For example, ... (TWH Complete this with data)
 - Data Yield of MSHRV-LED, MSHRV-Accel, AutoSenseBLE
 - Geolocation
 - Phone/SMS/Notifications
 - Phone screen touches
 
-This is the sample dashboard, you may [create aditional dashboards](http://docs.grafana.org/guides/getting_started/) to visualize all of the sensors' raw data.
+You may [create additional dashboards](http://docs.grafana.org/guides/getting_started/) to visualize all of the raw and processed data.
 
 
 ## Analyzing your data with Jupyter Notebooks
@@ -184,39 +193,43 @@ __Description needed__
 If you want to write code and scripts to analyze and process your data.
 Link to Getting started with Jupyter notebook tutorials
 
+Open this link in your web browser [http://localhost:8080/jupyterhub/hub/login](http://localhost:8080/jupyterhub/hub/login) to interact and analyze your data.  
 
-You may access Python Jupyter Notebook interface at:
-```
-http://localhost/jupyterhub/hub/login
-```
+1. A login screen will be shown as follows.  
 
-Default user for Jupyter notebook is
-```
-User Name: md2k
-Password: md2k
-```
-Jupyter Notebook has cc_demo folder that contains sample script. Demo script shows some example on how to use CerebralCortex API to interact with data:
+  The username and password are both `md2k`.  The warning shown is because this site is running locally on your machine and is not secured by a security certificate.  There is no data leaving the machine and going across the internet.
 
-To create new python script:
-```
-Authenticate with user credentials
-Click on Files tab
-Click on new and select pySpark (Spark 2.2.0) (Python 3) to create a new Python script.
-```
+  ![Jupyter Hub](imgs/jupyter.png)
 
-### Interacting CerebralCortex using Jupyter
-The Jupyter notebook contains ```cc_demo/CerebralCortex_Basic_Usage.ipynb``` that has basic examples on how to:
+2. A file browser will appear after successful authentication and you should choose the `cc_demo` folder.
 
-- Import CerebralCortex libraries and loading configurations
-- Get all users of a study
-- Get all streams of a user
-- Get days when a stream has data available
-- Get a stream's raw data and metadata
-- Plot stream raw data
+  ![Jupyter Files](imgs/jupyter-files.png)
 
-### Computing features
-The Jupyter notebook environment also contains the [CerebralCortex-DataAnalysis](https://github.com/MD2Korg/CerebralCortex-DataAnalysis) repository.
-This repository contains the code to compute features on the data. The repository contains a number of features in the `core/feature` directory.
+  ![Jupyter Demo](imgs/jupyter-demo.png)
+
+3. Click on the `CerebralCortex_Basic_Usage.ipynb` and it will open in a new tab.  This provides an overview of how to utilize Cerebral Cortex and visualize some data.
+
+  ![Jupyter Cerebral Cortex Demo](imgs/jupyter-CC-demo.png)
+
+This example notebook demonstrates the following:
+  - Import CerebralCortex libraries and loading configurations
+  - Get all users of a study
+  - Get all streams of a user
+  - Get days when a stream has data available
+  - Get a stream's raw data and metadata
+  - Plot stream raw data
+
+
+### Creating your own scripts
+
+  1. Authenticate with user credentials
+  2. Click on Files tab
+  3. Click on new and select `pySpark (Spark 2.2.0) (Python 3)` to create a new Python script.
+
+
+
+## Computing features
+The [CerebralCortex-DataAnalysis](https://github.com/MD2Korg/CerebralCortex-DataAnalysis) repository is available within the Vagrant virtual machine.  This repository contains the code to compute features on the data. The repository contains a number of features in the `core/feature` directory.
 The following features have been validated by us and that are what we believe is stable. The other features are still
 under development. Please keep an lookout on this page for updates to stable features.
 * phone_features
@@ -226,9 +239,9 @@ under development. Please keep an lookout on this page for updates to stable fea
 
 `Simple_driver.ipynb` provides an example to execute features contained in the CerebralCortex-DataAnalysis repository.
 
-Please have a look at the documentation for each of the obove features to get more insight into their functionality.
+Please have a look at the documentation for each of the above features to get more insight into their functionality.
 
-#### Senors needed for the different features
+#### Sensors needed for the different features
 The `phone_features` and the `gpsfeature` can be computed from the data by your phone. The `puffmarker` and the `rr_interval`
 require the data from the wrist worn MotionsenseHRV sensor.
 
@@ -272,22 +285,11 @@ $ vagrant up
 ## FAQ
 
 1. **I'm stuck, where do I get help?**
-Please look for more information or ask for help here: [https://discuss.md2k.org/](https://discuss.md2k.org/)
+
+  Please look for more information or ask for help here: [https://discuss.md2k.org/](https://discuss.md2k.org/)
 
 2. **System requirements**
 
-
-3. **Possible errors that can be encountered during the installation.**
-```
-Pulling grafana (grafana/grafana:latest)...
-Get https://registry-1.docker.io/v2/: dial tcp: lookup registry-1.docker.io on
-10.0.2.3:53: read udp 10.0.2.15:34893->10.0.2.3:53: i/o timeout
-```
-The above error is DockerCompose error, please restart initializing the VM with
-the following command.
-```
-vagrant up --provision
-```
-
 4. **Errors encountered during provisioning**
-Use `sudo vagrant up --provision` to resume the installation.
+
+  Use `vagrant up --provision` to resume the installation.
