@@ -56,11 +56,12 @@ These steps are preformed from the command line with the support of [Homebrew](h
   vagrant up
   ```
 
-## Windows 10:
+## Windows 7+:
 
 1. Install VirtualBox and Vagrant
-  - Download and install the Windows binary for VirtualBox: [https://www.virtualbox.org/wiki/Downloads](https://www.virtualbox.org/wiki/Downloads)
-  - Download and install the Windows binary for Vagrant: [https://www.vagrantup.com/downloads.html](https://www.vagrantup.com/downloads.html)
+  - Download and install the Windows binary for VirtualBox: https://www.virtualbox.org/wiki/Downloads
+  - Download and install the Windows binary for Vagrant: https://www.vagrantup.com/downloads.html
+
 
 2. Install the docker-compose plugin for Vagrant by running the Windows command line: `cmd.exe`
   ```bash
@@ -70,7 +71,7 @@ These steps are preformed from the command line with the support of [Homebrew](h
   Please consult [Vagrant Documentation](https://www.vagrantup.com/docs/)  if you face any installation errors for step 1 and 2.
 
 3. Download or clone this CerebralCortex-Vagrant repository.  
-  Download location: [https://github.com/MD2Korg/CerebralCortex-Vagrant/archive/personal.zip](https://github.com/MD2Korg/CerebralCortex-Vagrant/archive/personal.zip)
+  Download location: https://github.com/MD2Korg/CerebralCortex-Vagrant/archive/personal.zip
 
   or clone from Git if installed
   ```bash
