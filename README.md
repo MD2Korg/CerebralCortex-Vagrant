@@ -62,29 +62,22 @@ These steps are preformed from the command line with the support of [Homebrew](h
   - Download and install the Windows binary for VirtualBox: https://www.virtualbox.org/wiki/Downloads
   - Download and install the Windows binary for Vagrant: https://www.vagrantup.com/downloads.html
 
+2. Download the CerebralCortex-Vagrant repository.  
+    Download location: https://github.com/MD2Korg/CerebralCortex-Vagrant/archive/personal.zip
 
-2. Install the docker-compose plugin for Vagrant by running the Windows command line: `cmd.exe`
-  ```bash
-  vagrant plugin install vagrant-docker-compose
-  vagrant plugin install vagrant-vbguest
-  ```
+3. Extract the `CerebralCortex-Vagrant-personal.zip` file and open it in `Explorer`
+
+4. Double click on the `cerebralcortex_initialize.cmd` file which will launch a command window and begin the installation of the Cerebral Cortex platform.
+
   Please consult [Vagrant Documentation](https://www.vagrantup.com/docs/)  if you face any installation errors for step 1 and 2.
 
-3. Download or clone this CerebralCortex-Vagrant repository.  
-  Download location: https://github.com/MD2Korg/CerebralCortex-Vagrant/archive/personal.zip
+5. **NOTE: For Windows installations, replace `vagrant_ssh` with double clicking on `cerebralcortex_console` in all remaining steps.**
 
-  or clone from Git if installed
-  ```bash
-  git clone https://github.com/MD2KOrg/CerebralCortex-Vagrant -b personal
-  ```
+## Launch Cerebral Cortex
+Open the following link to start utilizing Cerebral Cortex http://localhost:8080/
 
-  Finally, start the installation process.
-  ```bash
-  cd CerebralCortex-Vagrant
-  vagrant up
-  ```
 
-## Remaining Installation Steps Common to All Operating Systems:
+## Optional: Steps to Explore Underlying Services
 
 Confirm that everything started up correctly. The following commands lists the the status of all the services used by CerebralCortex.  Docker-Compose commands can be used to
 interact with Cerebral Cortex's containers.
