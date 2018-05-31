@@ -9,7 +9,7 @@ This software is intended for informational and demonstration purposes only and 
 The Cerebral Cortex platform can installed and tested on any of the three major platforms: Linux, Mac OS X, and Windows.  The following instructions will walk you through installing the dependencies necessary to run Cerebral Cortex.
 
 ## Linux: (Ubuntu 17.10)
-These steps are preformed from the command line and do not need a graphical interface.
+These steps are performed from the command line and do not need a graphical interface.
 
 1. Install VirtualBox and Vagrant
   ```bash
@@ -34,7 +34,7 @@ These steps are preformed from the command line and do not need a graphical inte
   ```
 
 ## Mac OS X:
-These steps are preformed from the command line with the support of [Homebrew](https://brew.sh/) and do not need a graphical interface.
+These steps are performed from the command line with the support of [Homebrew](https://brew.sh/) and do not need a graphical interface.
 
 1. Install VirtualBox and Vagrant
   ```bash
@@ -71,7 +71,7 @@ These steps are preformed from the command line with the support of [Homebrew](h
 
   Please consult [Vagrant Documentation](https://www.vagrantup.com/docs/)  if you face any installation errors for step 1 and 2.
 
-5. **NOTE: For Windows installations, replace `vagrant_ssh` with double clicking on `cerebralcortex_console` in all remaining steps or running the subsequent commands in the command window.**
+5. **NOTE: For Windows installations, replace `vagrant_ssh` with double clicking on `cerebralcortex_console` in all remaining steps and running the subsequent commands in the command window.**
 
 ## Launch Cerebral Cortex
 Open the following link to start utilizing Cerebral Cortex http://localhost:8080/
