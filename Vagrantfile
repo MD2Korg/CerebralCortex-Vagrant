@@ -149,6 +149,17 @@ Vagrant.configure("2") do |config|
     pip3.6 install -r /home/vagrant/CerebralCortex-DataAnalysis/requirements.txt
   SHELL
 
+  # setting paths
+  config.vm.provision "shell", inline: <<-SHELL
+    echo "export PATH=$PATH:/usr/local/spark/bin/" >> /home/vagrant/.bashrc
+  SHELL
+
+  # copying files
+  config.vm.provision "shell", inline: <<-SHELL
+    cp /vagrant/ingest_and* /home/vagrant
+    cp /vagrant/enable* /home/vagrant
+  SHELL
+
   # Install required Cerebral* libraries
   config.vm.provision "shell", inline: <<-SHELL
     cd /home/vagrant/CerebralCortex
