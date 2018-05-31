@@ -71,7 +71,7 @@ These steps are performed from the command line with the support of [Homebrew](h
 
 4. Double click on the `cerebralcortex_initialize.cmd` file which will launch a command window and begin the installation of the Cerebral Cortex platform. This installation will take some time (20-30 minutes with a strong internet connection). The command prompt window will close automitcally when the installation is complete.
 
-5. **NOTE: For Windows installation, in all remaining steps, replace `vagrant_ssh` with double-clicking on `cerebralcortex_console` (found in the CerebralCortex-Vagrant-personal folder), then run the subsequent commands in the command prompt window.**
+5. Double-click on `cerebralcortex_console.cmd` (found in the CerebralCortex-Vagrant-personal folder), then run all subsequent commands in the resulting command prompt window.
 
 ## Launch Cerebral Cortex
 Open the following link to start utilizing Cerebral Cortex http://localhost:8080/
