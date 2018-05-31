@@ -62,10 +62,10 @@ These steps are performed from the command line with the support of [Homebrew](h
   - Download and install the Windows binary for VirtualBox: https://www.virtualbox.org/wiki/Downloads
   - Download and install the Windows binary for Vagrant: https://www.vagrantup.com/downloads.html
 
+  Please consult [Vagrant Documentation](https://www.vagrantup.com/docs/)  if you face any installation errors for step 1.
+  
 2. Download the CerebralCortex-Vagrant repository.  
     Download location: https://github.com/MD2Korg/CerebralCortex-Vagrant/archive/personal.zip
-
-  Please consult [Vagrant Documentation](https://www.vagrantup.com/docs/)  if you face any installation errors for step 1 and 2.
   
 3. Extract the `CerebralCortex-Vagrant-personal.zip` file and open it in `Explorer`
 
