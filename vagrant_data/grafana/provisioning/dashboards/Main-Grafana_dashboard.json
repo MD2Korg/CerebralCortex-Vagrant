@@ -1366,7 +1366,8 @@
       "yaxis": {
         "align": false,
         "alignLevel": null
-      }
+      },
+      "type": "table"
     }
   ],
   "refresh": "30m",
@@ -1374,34 +1375,10 @@
   "style": "dark",
   "tags": [],
   "templating": {
-    "list": [
-      {
-        "allValue": "*",
-        "current": {
-          "text": "All",
-          "value": "$__all"
-        },
-        "datasource": "cc_demo",
-        "hide": 0,
-        "includeAll": true,
-        "label": "username",
-        "multi": false,
-        "name": "username",
-        "options": [],
-        "query": "show tag values with key=\"owner_name\"",
-        "refresh": 2,
-        "regex": "",
-        "sort": 1,
-        "tagValuesQuery": "",
-        "tags": [],
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
-      }
-    ]
+    "list": []
   },
   "time": {
-    "from": "now-30d",
+    "from": "now-2d",
     "to": "now"
   },
   "timepicker": {
