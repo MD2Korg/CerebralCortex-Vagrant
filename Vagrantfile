@@ -144,6 +144,11 @@ Vagrant.configure("2") do |config|
     curl -G http://localhost:8086/query --data-urlencode "q=CREATE DATABASE cerebralcortex_raw"
   SHELL
 
+  # installing required packages
+  config.vm.provision "shell", inline: <<-SHELL
+    pip3.6 install -r /home/vagrant/CerebralCortex-DataAnalysis/requirements.txt
+  SHELL
+
   # Install required Cerebral* libraries
   config.vm.provision "shell", inline: <<-SHELL
     cd /home/vagrant/CerebralCortex
