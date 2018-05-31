@@ -6,6 +6,7 @@ datasources:
     access: proxy
     orgId: 1
     database: cerebralcortex_raw
-    user: 
-    password: 
+    user:
+    password:
     url: http://influxdb:8086
+    isDefault: true

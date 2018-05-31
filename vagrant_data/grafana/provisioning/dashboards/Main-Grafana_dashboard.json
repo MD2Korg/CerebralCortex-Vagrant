@@ -2,7 +2,6 @@
   "annotations": {
     "list": [
       {
-        "$$hashKey": "object:188",
         "builtIn": 1,
         "datasource": "-- Grafana --",
         "enable": true,
@@ -15,210 +14,23 @@
   },
   "editable": true,
   "gnetId": null,
-  "graphTooltip": 1,
-  "id": 2,
-  "iteration": 1527314084004,
+  "graphTooltip": 0,
+  "id": null,
   "links": [],
   "panels": [
     {
-      "aliasColors": {},
+      "aliasColors": {
+        "Accel-X": "#7eb26d"
+      },
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "cc_demo",
+      "datasource": "${DS_CC_DEMO}",
       "fill": 1,
       "gridPos": {
-        "h": 7,
-        "w": 12,
+        "h": 8,
+        "w": 24,
         "x": 0,
-        "y": 0
-      },
-      "id": 3,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [
-        {
-          "alias": "MotionSenseHRV Left Wrist",
-          "color": "#7EB26D"
-        },
-        {
-          "alias": "MotionSenseHRV Right Wrist",
-          "color": "#6ED0E0"
-        }
-      ],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "alias": "MotionSenseHRV Left Wrist",
-          "dsType": "influxdb",
-          "groupBy": [
-            {
-              "params": [
-                "1h"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "none"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "DATA_QUALITY_SUMMARY_MINUTE--LED--org.md2k.motionsense--MOTION_SENSE_HRV--LEFT_WRIST",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "value_0"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "sum"
-              },
-              {
-                "params": [
-                  "/ 3600000"
-                ],
-                "type": "math"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "owner_name",
-              "operator": "=~",
-              "value": "/^$username$/"
-            }
-          ]
-        },
-        {
-          "alias": "MotionSenseHRV Right Wrist",
-          "dsType": "influxdb",
-          "groupBy": [
-            {
-              "params": [
-                "1h"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "none"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "DATA_QUALITY_SUMMARY_MINUTE--LED--org.md2k.motionsense--MOTION_SENSE_HRV--RIGHT_WRIST",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "B",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "value_0"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "sum"
-              },
-              {
-                "params": [
-                  "/ 3600000"
-                ],
-                "type": "math"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "owner_name",
-              "operator": "=~",
-              "value": "/^$username$/"
-            }
-          ]
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Data Yield MSHRV-LED",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": [
-          "total"
-        ]
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": "Hours",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "cc_demo",
-      "fill": 1,
-      "gridPos": {
-        "h": 7,
-        "w": 12,
-        "x": 12,
         "y": 0
       },
       "id": 2,
@@ -236,17 +48,21 @@
       "links": [],
       "nullPointMode": "null",
       "percentage": false,
-      "pointradius": 2,
+      "pointradius": 5,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [
         {
-          "alias": "MotionSenseHRV Left Wrist",
-          "color": "#7EB26D"
+          "alias": "Mag-X",
+          "yaxis": 2
         },
         {
-          "alias": "MotionSenseHRV Right Wrist",
-          "color": "#6ED0E0"
+          "alias": "Mag-Y",
+          "yaxis": 2
+        },
+        {
+          "alias": "Mag-Z",
+          "yaxis": 2
         }
       ],
       "spaceLength": 10,
@@ -254,23 +70,22 @@
       "steppedLine": false,
       "targets": [
         {
-          "alias": "MotionSenseHRV Left Wrist",
-          "dsType": "influxdb",
+          "alias": "Accel-$col",
           "groupBy": [
             {
               "params": [
-                "1h"
+                "$__interval"
               ],
               "type": "time"
             },
             {
               "params": [
-                "none"
+                "null"
               ],
               "type": "fill"
             }
           ],
-          "measurement": "DATA_QUALITY_SUMMARY_MINUTE--ACCELEROMETER--org.md2k.motionsense--MOTION_SENSE_HRV--LEFT_WRIST",
+          "measurement": "ACCELEROMETER--org.md2k.mcerebrum--PHONE",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "A",
@@ -279,48 +94,77 @@
             [
               {
                 "params": [
-                  "value_0"
+                  "Accelerometer-X"
                 ],
                 "type": "field"
               },
               {
                 "params": [],
-                "type": "sum"
+                "type": "mean"
               },
               {
                 "params": [
-                  "/ 3600000"
+                  "X"
                 ],
-                "type": "math"
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "Accelerometer-Y"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              },
+              {
+                "params": [
+                  "Y"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "Accelerometer-Z"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              },
+              {
+                "params": [
+                  "Z"
+                ],
+                "type": "alias"
               }
             ]
           ],
-          "tags": [
-            {
-              "key": "owner_name",
-              "operator": "=~",
-              "value": "/^$username$/"
-            }
-          ]
+          "tags": []
         },
         {
-          "alias": "MotionSenseHRV Right Wrist",
-          "dsType": "influxdb",
+          "alias": "Gyro-$col",
           "groupBy": [
             {
               "params": [
-                "1h"
+                "$__interval"
               ],
               "type": "time"
             },
             {
               "params": [
-                "none"
+                "null"
               ],
               "type": "fill"
             }
           ],
-          "measurement": "DATA_QUALITY_SUMMARY_MINUTE--ACCELEROMETER--org.md2k.motionsense--MOTION_SENSE_HRV--RIGHT_WRIST",
+          "measurement": "GYROSCOPE--org.md2k.mcerebrum--PHONE",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "B",
@@ -329,35 +173,144 @@
             [
               {
                 "params": [
-                  "value_0"
+                  "Gyroscope-X"
                 ],
                 "type": "field"
               },
               {
                 "params": [],
-                "type": "sum"
+                "type": "mean"
               },
               {
                 "params": [
-                  "/ 3600000"
+                  "X"
                 ],
-                "type": "math"
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "Gyroscope-Y"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              },
+              {
+                "params": [
+                  "Y"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "Gyroscope-Z"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              },
+              {
+                "params": [
+                  "Z"
+                ],
+                "type": "alias"
               }
             ]
           ],
-          "tags": [
+          "tags": []
+        },
+        {
+          "alias": "Mag-$col",
+          "groupBy": [
             {
-              "key": "owner_name",
-              "operator": "=~",
-              "value": "/^$username$/"
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
             }
-          ]
+          ],
+          "measurement": "COMPASS--org.md2k.mcerebrum--PHONE",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "C",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "Compass-X"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              },
+              {
+                "params": [
+                  "X"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "Compass-Y"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              },
+              {
+                "params": [
+                  "Y"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "Compass-Z"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              },
+              {
+                "params": [
+                  "Z"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "tags": []
         }
       ],
       "thresholds": [],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Data Yield MSHRV - Accel",
+      "title": "Smartphone Motion Sensors",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -374,7 +327,7 @@
       "yaxes": [
         {
           "format": "short",
-          "label": "Hours",
+          "label": null,
           "logBase": 1,
           "max": null,
           "min": null,
@@ -399,20 +352,382 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "cc_demo",
+      "datasource": "${DS_CC_DEMO}",
       "fill": 1,
       "gridPos": {
-        "h": 7,
+        "h": 8,
         "w": 24,
         "x": 0,
-        "y": 7
+        "y": 8
       },
       "id": 4,
       "legend": {
         "avg": false,
         "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": false,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 2,
+      "points": true,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "Confidence",
+          "fill": 0,
+          "lines": true,
+          "yaxis": 2
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "State",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "ACTIVITY_TYPE--org.md2k.mcerebrum--PHONE",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value_0"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "distinct"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "alias": "Confidence",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "ACTIVITY_TYPE--org.md2k.mcerebrum--PHONE",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value_1"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "distinct"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Activity Classifier",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": null,
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "${DS_CC_DEMO}",
+      "fill": 1,
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 16
+      },
+      "id": 13,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": false,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 0.5,
+      "points": true,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "Altitude",
+          "yaxis": 2
+        },
+        {
+          "alias": "Accuracy",
+          "yaxis": 2
+        },
+        {
+          "alias": "Speed",
+          "yaxis": 2
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "$col",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "LOCATION--org.md2k.mcerebrum--PHONE",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "Latitude"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              },
+              {
+                "params": [
+                  "Latitude"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "Longitude"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              },
+              {
+                "params": [
+                  "Longitude"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "Altitude"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              },
+              {
+                "params": [
+                  "Altitude"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "Accuracy"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              },
+              {
+                "params": [
+                  "Accuracy"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "Speed"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              },
+              {
+                "params": [
+                  "Speed"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Smartphone Location",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "${DS_CC_DEMO}",
+      "fill": 1,
+      "gridPos": {
+        "h": 7,
+        "w": 24,
+        "x": 0,
+        "y": 24
+      },
+      "id": 8,
+      "legend": {
+        "avg": false,
+        "current": false,
         "max": false,
         "min": false,
         "show": true,
@@ -424,7 +739,7 @@
       "links": [],
       "nullPointMode": "null",
       "percentage": false,
-      "pointradius": 2,
+      "pointradius": 5,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [],
@@ -433,23 +748,22 @@
       "steppedLine": false,
       "targets": [
         {
-          "alias": "AutoSenseBLE Accelerometer",
-          "dsType": "influxdb",
+          "alias": "Smartphone",
           "groupBy": [
             {
               "params": [
-                "1h"
+                "$__interval"
               ],
               "type": "time"
             },
             {
               "params": [
-                "none"
+                "null"
               ],
               "type": "fill"
             }
           ],
-          "measurement": "DATA_QUALITY_SUMMARY_MINUTE--ACCELEROMETER--org.md2k.autosenseble--AUTOSENSE_BLE--CHEST",
+          "measurement": "BATTERY--org.md2k.mcerebrum--PHONE",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "A",
@@ -458,48 +772,35 @@
             [
               {
                 "params": [
-                  "value_0"
+                  "Level"
                 ],
                 "type": "field"
               },
               {
                 "params": [],
-                "type": "sum"
-              },
-              {
-                "params": [
-                  "/ 3600000"
-                ],
-                "type": "math"
+                "type": "mean"
               }
             ]
           ],
-          "tags": [
-            {
-              "key": "owner_name",
-              "operator": "=~",
-              "value": "/^$username$/"
-            }
-          ]
+          "tags": []
         },
         {
-          "alias": "AutoSenseBLE Respiration",
-          "dsType": "influxdb",
+          "alias": "MotionSense (Left)",
           "groupBy": [
             {
               "params": [
-                "1h"
+                "$__interval"
               ],
               "type": "time"
             },
             {
               "params": [
-                "none"
+                "null"
               ],
               "type": "fill"
             }
           ],
-          "measurement": "DATA_QUALITY_SUMMARY_MINUTE--RESPIRATION--org.md2k.autosenseble--AUTOSENSE_BLE--CHEST",
+          "measurement": "BATTERY--org.md2k.motionsense--MOTION_SENSE_HRV_PLUS--LEFT_WRIST",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "B",
@@ -508,48 +809,35 @@
             [
               {
                 "params": [
-                  "value_0"
+                  "Battery-Level"
                 ],
                 "type": "field"
               },
               {
                 "params": [],
-                "type": "sum"
-              },
-              {
-                "params": [
-                  "/ 3600000"
-                ],
-                "type": "math"
+                "type": "mean"
               }
             ]
           ],
-          "tags": [
-            {
-              "key": "owner_name",
-              "operator": "=~",
-              "value": "/^$username$/"
-            }
-          ]
+          "tags": []
         },
         {
-          "alias": "AutoSenseBLE ECG",
-          "dsType": "influxdb",
+          "alias": "MotionSense (Right)",
           "groupBy": [
             {
               "params": [
-                "1h"
+                "$__interval"
               ],
               "type": "time"
             },
             {
               "params": [
-                "none"
+                "null"
               ],
               "type": "fill"
             }
           ],
-          "measurement": "DATA_QUALITY_SUMMARY_MINUTE--ECG--org.md2k.autosenseble--AUTOSENSE_BLE--CHEST",
+          "measurement": "BATTERY--org.md2k.motionsense--MOTION_SENSE_HRV_PLUS--RIGHT_WRIST",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "C",
@@ -558,418 +846,23 @@
             [
               {
                 "params": [
-                  "value_0"
+                  "Battery-Level"
                 ],
                 "type": "field"
               },
               {
                 "params": [],
-                "type": "sum"
-              },
-              {
-                "params": [
-                  "/ 3600000"
-                ],
-                "type": "math"
+                "type": "mean"
               }
             ]
           ],
-          "tags": [
-            {
-              "key": "owner_name",
-              "operator": "=~",
-              "value": "/^$username$/"
-            }
-          ]
+          "tags": []
         }
       ],
       "thresholds": [],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Data Yield AutoSenseBLE",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": "Hours",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "cc_demo",
-      "fill": 1,
-      "gridPos": {
-        "h": 7,
-        "w": 24,
-        "x": 0,
-        "y": 14
-      },
-      "id": 5,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": false,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 2,
-      "points": true,
-      "renderer": "flot",
-      "seriesOverrides": [
-        {
-          "alias": "Geolocation (Home)",
-          "color": "#1F78C1"
-        },
-        {
-          "alias": "Geolocation (Work)",
-          "color": "#7EB26D"
-        }
-      ],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "alias": "Geolocation (Work)",
-          "dsType": "influxdb",
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "none"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "GEOFENCE_SUMMARY_MINUTE--Work--org.md2k.phonesensor--PHONE",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "Location-Name"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "count"
-              }
-            ],
-            [
-              {
-                "params": [
-                  "value_0"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "count"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "owner_name",
-              "operator": "=~",
-              "value": "/^$username$/"
-            }
-          ]
-        },
-        {
-          "alias": "Geolocation (Home)",
-          "dsType": "influxdb",
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "none"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "GEOFENCE_SUMMARY_MINUTE--Home--org.md2k.phonesensor--PHONE",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "B",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "Location-Name"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "count"
-              }
-            ],
-            [
-              {
-                "params": [
-                  "value_0"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "count"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "owner_name",
-              "operator": "=~",
-              "value": "/^$username$/"
-            }
-          ]
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Geolocation",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {
-        "Beacon (Home)": "#1F78C1",
-        "Beacon (Work)": "#7EB26D"
-      },
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "cc_demo",
-      "fill": 1,
-      "gridPos": {
-        "h": 6,
-        "w": 24,
-        "x": 0,
-        "y": 21
-      },
-      "id": 8,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": false,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 2,
-      "points": true,
-      "renderer": "flot",
-      "seriesOverrides": [
-        {
-          "alias": "Geolocation (Home)",
-          "color": "#1F78C1"
-        },
-        {
-          "alias": "Geolocation (Work)",
-          "color": "#7EB26D"
-        }
-      ],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "alias": "Beacon (Work)",
-          "dsType": "influxdb",
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "none"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "BEACON--org.md2k.beacon--BEACON--WORK_1",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "RSSI"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "count"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "owner_name",
-              "operator": "=~",
-              "value": "/^$username$/"
-            }
-          ]
-        },
-        {
-          "alias": "Beacon (Home)",
-          "dsType": "influxdb",
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "none"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "BEACON--org.md2k.beacon--BEACON--HOME",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "B",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "RSSI"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "count"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "owner_name",
-              "operator": "=~",
-              "value": "/^$username$/"
-            }
-          ]
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Beacon Counts",
+      "title": "Battery Levels",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1011,13 +904,127 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "cc_demo",
+      "datasource": "${DS_CC_DEMO}",
       "fill": 1,
       "gridPos": {
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 27
+        "y": 31
+      },
+      "id": 9,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "Smartphone",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "STEP_COUNT--org.md2k.mcerebrum--PHONE",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "Step-Count"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Step Count",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "${DS_CC_DEMO}",
+      "fill": 1,
+      "gridPos": {
+        "h": 7,
+        "w": 24,
+        "x": 0,
+        "y": 38
       },
       "id": 7,
       "legend": {
@@ -1029,7 +1036,7 @@
         "total": false,
         "values": false
       },
-      "lines": true,
+      "lines": false,
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
@@ -1043,12 +1050,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "alias": "Number of phone calls",
-          "dsType": "influxdb",
+          "alias": "Touches",
           "groupBy": [
             {
               "params": [
-                "1d"
+                "$__interval"
               ],
               "type": "time"
             },
@@ -1059,7 +1065,7 @@
               "type": "fill"
             }
           ],
-          "measurement": "CU_CALL_TYPE--edu.dartmouth.eureka",
+          "measurement": "TOUCH_SCREEN--org.md2k.mcerebrum--PHONE",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "A",
@@ -1076,133 +1082,15 @@
                 "params": [],
                 "type": "count"
               }
-            ],
-            [
-              {
-                "params": [
-                  "Call-Type"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "count"
-              }
             ]
           ],
-          "tags": [
-            {
-              "key": "owner_name",
-              "operator": "=~",
-              "value": "/^$username$/"
-            }
-          ]
-        },
-        {
-          "alias": "Number of SMS messages",
-          "dsType": "influxdb",
-          "groupBy": [
-            {
-              "params": [
-                "1d"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "none"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "CU_SMS_TYPE--edu.dartmouth.eureka",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "B",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "value_0"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "count"
-              }
-            ],
-            [
-              {
-                "params": [
-                  "SMS-Type"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "count"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "owner_name",
-              "operator": "=~",
-              "value": "/^$username$/"
-            }
-          ]
-        },
-        {
-          "alias": "Phone Notifications",
-          "dsType": "influxdb",
-          "groupBy": [
-            {
-              "params": [
-                "1d"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "none"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "CU_NOTIF_POST_TICKERTEXT--edu.dartmouth.eureka",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "C",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "value_0"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "count"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "owner_name",
-              "operator": "=~",
-              "value": "/^$username$/"
-            }
-          ]
+          "tags": []
         }
       ],
       "thresholds": [],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Phone/SMS/Notifications",
+      "title": "Smartphone Touch Screen Events",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1240,19 +1128,17 @@
       }
     },
     {
-      "aliasColors": {
-        "Screen Touch Count": "#7EB26D"
-      },
+      "aliasColors": {},
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "cc_demo",
+      "datasource": "${DS_CC_DEMO}",
       "fill": 1,
       "gridPos": {
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 34
+        "y": 45
       },
       "id": 6,
       "legend": {
@@ -1264,13 +1150,13 @@
         "total": false,
         "values": false
       },
-      "lines": false,
+      "lines": true,
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
       "percentage": false,
-      "pointradius": 1,
-      "points": true,
+      "pointradius": 5,
+      "points": false,
       "renderer": "flot",
       "seriesOverrides": [],
       "spaceLength": 10,
@@ -1278,12 +1164,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "alias": "Screen Touch Count",
-          "dsType": "influxdb",
+          "alias": "MotionSense (Left)",
           "groupBy": [
             {
               "params": [
-                "$__interval"
+                "1m"
               ],
               "type": "time"
             },
@@ -1294,7 +1179,7 @@
               "type": "fill"
             }
           ],
-          "measurement": "TOUCH_SCREEN--org.md2k.phonesensor--PHONE",
+          "measurement": "DATA_QUALITY_SUMMARY_MINUTE--ACCELEROMETER--org.md2k.motionsense--MOTION_SENSE_HRV_PLUS--LEFT_WRIST",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "A",
@@ -1309,35 +1194,66 @@
               },
               {
                 "params": [],
-                "type": "count"
+                "type": "mean"
+              },
+              {
+                "params": [
+                  " / 60000"
+                ],
+                "type": "math"
               }
-            ],
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "alias": "MotionSense (Right)",
+          "groupBy": [
+            {
+              "params": [
+                "1m"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "DATA_QUALITY_SUMMARY_MINUTE--ACCELEROMETER--org.md2k.motionsense--MOTION_SENSE_HRV_PLUS--RIGHT_WRIST",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
             [
               {
                 "params": [
-                  "Screen-Touch"
+                  "value_0"
                 ],
                 "type": "field"
               },
               {
                 "params": [],
-                "type": "count"
+                "type": "mean"
+              },
+              {
+                "params": [
+                  " / 60000"
+                ],
+                "type": "math"
               }
             ]
           ],
-          "tags": [
-            {
-              "key": "owner_name",
-              "operator": "=~",
-              "value": "/^$username$/"
-            }
-          ]
+          "tags": []
         }
       ],
       "thresholds": [],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Phone Screen Touches",
+      "title": "MotionSense Data Yield (Motion)",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1361,6 +1277,84 @@
           "show": true
         },
         {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "columns": [
+        {
+          "text": "Total",
+          "value": "total"
+        }
+      ],
+      "datasource": "${DS_CC_DEMO}",
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 52
+      },
+      "id": 11,
+      "links": [],
+      "pageSize": null,
+      "scroll": true,
+      "showHeader": true,
+      "sort": {
+        "col": 1,
+        "desc": true
+      },
+      "styles": [
+        {
+          "alias": "Time",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "pattern": "Time",
+          "type": "date"
+        },
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 2,
+          "pattern": "/.*/",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        }
+      ],
+      "targets": [
+        {
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT count(*) FROM /.*/ WHERE $timeFilter",
           "format": "short",
           "label": null,
           "logBase": 1,
