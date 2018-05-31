@@ -116,7 +116,7 @@ The above commands display the status of all the services as shown below.
 
   ![mCerebrum Data Folder](imgs/mCerebrum_data_folder.png)
 
-4. Copy all of the `*.gz` and `*.json` files to `PATH/TO/CerebralCortex-Vagrant/data/raw`
+4. Copy all of the `*.gz` and `*.json` files in the folder and paste them to `PATH/TO/CerebralCortex-Vagrant-personal/vagrant_data/raw`
 
   ![mCerebrum to Cerebral Cortex](imgs/mCerebrum_to_cerebral_cortex.png)
 
@@ -125,9 +125,9 @@ The above commands display the status of all the services as shown below.
 
 ### Importing and processing your data
 
-Some of the features that can be computed rely on the Google Places API and if you would like to include this optional capability, the following steps are required to configure this option.
+#### Enable Google Places API (optional)
 
-#### Enable Google Places API
+Some of the features that can be computed rely on the Google Places API and if you would like to include this optional capability, the following steps are required to configure this option.
 
 1. Navigate to [developers.google.com](https://developers.google.com/) and sign in with a valid Google account.
 
