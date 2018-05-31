@@ -139,7 +139,7 @@ Some of the features that can be computed rely on the Google Places API and if y
 
   ```bash
   vagrant ssh
-  enable_google_places.sh COPY_KEY_HERE
+  ./enable_google_places.sh COPY_KEY_HERE
   ```
 
 #### Import and analyze the data
@@ -147,7 +147,7 @@ Data can now be processed, which can take some time due to the CPU intensive nat
 
   ```bash
   vagrant ssh
-  ingest_and_analyze.sh
+  ./ingest_and_analyze.sh
   ```
 
 A large number of console logs will appear on the screen indicating what the system is currently doing.  It will first preprocess the data files you copied from the mCerebrum app into a format that Cerebral Cortex will ingest.  Next, the ingestion pipeline will scan and import this data into Cerebral Cortex's internal data stores.  Finally, it will run a pre-specified set of feature computations based on the smartphone sensors streams.
