@@ -1,1 +1,1 @@
-vagrant ssh
+cmd.exe
