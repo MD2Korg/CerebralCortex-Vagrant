@@ -157,7 +157,7 @@ A large number of console logs will appear on the screen indicating what the sys
 Cerebral Cortex provides two mechanisms to visualize and analyze your data.  First, a user-centric interface is provided by the [Grafana](https://grafana.com/) project which can be utilized to plot and explore Cerebral Cortex data streams.  Second, a code-centric interface is provided by the [Jupyter](http://jupyter.org/) project and allows a user to write Python3 code to interact with the Cerebral Cortex kernel.
 
 ## Visualization of data with Grafana
-Open this link in your web browser http://localhost:8080/grafana to visualize your data.  
+Open this link in your web browser http://localhost:8080/grafana/login to visualize your data.  
 
 1. The default login and password are both `admin`.  
 
