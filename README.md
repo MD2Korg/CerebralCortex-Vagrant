@@ -6,7 +6,7 @@ This repository is ideal for developers and engineers to install and evaluate th
 This software is intended for informational and demonstration purposes only and is not designed to diagnose, treat, cure, prevent, or track disease or health states. No content provided in this software is intended to serve as a substitute for any kind of professional (e.g., medical) advice.
 
 # Installation Instructions
-The Cerebral Cortex platform can installed and tested on any of the three major platforms: Linux, Mac OS X, and Windows.  The following instructions will walk you through installing the dependencies necessary to run Cerebral Cortex.
+The Cerebral Cortex platform can installed and tested on any of the three major platforms: Linux, Mac OS X, and Windows.  The following instructions will walk you through installing the dependencies necessary to run Cerebral Cortex.  The Vagrant image is 5.0 GB (TWH: FIX THIS) and will take approximately 7 minutes to download on a 100 Mbit/second internet connection.
 
 ## Linux: (Ubuntu 17.10)
 These steps are performed from the command line and do not need a graphical interface.
@@ -34,7 +34,7 @@ These steps are performed from the command line and do not need a graphical inte
   ```
 
 ## Mac OS X:
-These steps are performed from the command line with the support of [Homebrew](https://brew.sh/) and do not need a graphical interface.
+These steps are performed from the command line (Terminal) with the support of [Homebrew](https://brew.sh/) and do not need a graphical interface.
 
 1. Install VirtualBox and Vagrant
   ```bash
@@ -112,11 +112,13 @@ The above commands display the status of all the services as shown below.
 
   ![mCerebrum Computer Interface](imgs/phone2computer.png)
 
+  ![Enable Android File Transfer](imgs/phone_allow.png)
+
 3. Using the computer, navigate to the phone’s org.md2k.mCerebrum folder. `Phone > Android > data > org.md2k.mCerebrum > files > 636fcc1f-8966-4e63-a9df-0cbaa6e9296c`
 
   ![mCerebrum Data Folder](imgs/mCerebrum_data_folder.png)
 
-4. Copy all of the `*.gz` and `*.json` files in the folder and paste them to `PATH/TO/CerebralCortex-Vagrant-personal/vagrant_data/raw`
+4. Copy all of the files in the folder and paste them into `PATH/TO/CerebralCortex-Vagrant-personal/vagrant_data/raw`
 
   ![mCerebrum to Cerebral Cortex](imgs/mCerebrum_to_cerebral_cortex.png)
 
@@ -149,8 +151,11 @@ Data can now be processed, which can take some time due to the CPU intensive nat
   vagrant ssh
   ./ingest_and_analyze.sh
   ```
+**Note: Exceptions and Warnings are to be expected during the data ingestion and analyzing phase**
 
 A large number of console logs will appear on the screen indicating what the system is currently doing.  It will first preprocess the data files you copied from the mCerebrum app into a format that Cerebral Cortex will ingest.  Next, the ingestion pipeline will scan and import this data into Cerebral Cortex's internal data stores.  Finally, it will run a pre-specified set of feature computations based on the smartphone sensors streams.
+
+
 
 
 # Visualizing and Analyzing Your Data
