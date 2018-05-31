@@ -2,6 +2,7 @@
   "annotations": {
     "list": [
       {
+        "$$hashKey": "object:2451",
         "builtIn": 1,
         "datasource": "-- Grafana --",
         "enable": true,
@@ -15,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": null,
+  "id": 2,
   "links": [],
   "panels": [
     {
@@ -1338,6 +1339,7 @@
       ],
       "targets": [
         {
+          "format": "short",
           "groupBy": [
             {
               "params": [
@@ -1352,25 +1354,44 @@
               "type": "fill"
             }
           ],
-          "orderByTime": "ASC",
-          "policy": "default",
-          "query": "SELECT count(*) FROM /.*/ WHERE $timeFilter",
-          "format": "short",
           "label": null,
           "logBase": 1,
           "max": null,
           "min": null,
-          "show": true
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT count(*) FROM /.*/ WHERE $timeFilter ",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "show": true,
+          "tags": []
         }
       ],
+      "title": "Data Stream Samples",
+      "transform": "timeseries_aggregations",
+      "type": "table",
       "yaxis": {
         "align": false,
         "alignLevel": null
-      },
-      "type": "table"
+      }
     }
   ],
-  "refresh": "30m",
+  "refresh": "10s",
   "schemaVersion": 16,
   "style": "dark",
   "tags": [],
