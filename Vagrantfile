@@ -151,7 +151,7 @@ Vagrant.configure("2") do |config|
 
   # setting paths
   config.vm.provision "shell", inline: <<-SHELL
-    echo "export PATH=$PATH:/usr/local/spark/bin/" >> /home/vagrant/.bashrc
+    echo "export PATH=$PATH:/usr/local/bin/:/usr/local/spark/bin/" >> /home/vagrant/.bashrc
   SHELL
 
   # copying files
