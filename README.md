@@ -63,13 +63,13 @@ These steps are performed from the command line with the support of [Homebrew](h
   - Download and install the Windows binary for Vagrant: https://www.vagrantup.com/downloads.html
 
   Please consult [Vagrant Documentation](https://www.vagrantup.com/docs/)  if you face any installation errors for step 1.
-  
+
 2. Download the CerebralCortex-Vagrant repository.  
     Download location: https://github.com/MD2Korg/CerebralCortex-Vagrant/archive/personal.zip
-  
+
 3. Extract the `CerebralCortex-Vagrant-personal.zip` file and open it in `Explorer`
 
-4. Double click on the `cerebralcortex_initialize.cmd` file which will launch a command window and begin the installation of the Cerebral Cortex platform. This installation will take some time (20-30 minutes with a strong internet connection). The command prompt window will close automitcally when the installation is complete. 
+4. Double click on the `cerebralcortex_initialize.cmd` file which will launch a command window and begin the installation of the Cerebral Cortex platform. This installation will take some time (20-30 minutes with a strong internet connection). The command prompt window will close automitcally when the installation is complete.
 
 5. **NOTE: For Windows installation, in all remaining steps, replace `vagrant_ssh` with double-clicking on `cerebralcortex_console` (found in the CerebralCortex-Vagrant-personal folder), then run the subsequent commands in the command prompt window.**
 
