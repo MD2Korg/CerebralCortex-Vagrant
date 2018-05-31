@@ -71,7 +71,7 @@ These steps are preformed from the command line with the support of [Homebrew](h
 
   Please consult [Vagrant Documentation](https://www.vagrantup.com/docs/)  if you face any installation errors for step 1 and 2.
 
-5. **NOTE: For Windows installations, replace `vagrant_ssh` with double clicking on `cerebralcortex_console` in all remaining steps.**
+5. **NOTE: For Windows installations, replace `vagrant_ssh` with double clicking on `cerebralcortex_console` in all remaining steps or running the subsequent commands in the command window.**
 
 ## Launch Cerebral Cortex
 Open the following link to start utilizing Cerebral Cortex http://localhost:8080/
@@ -144,6 +144,7 @@ Some of the features that can be computed rely on the Google Places API and if y
 
 #### Import and analyze the data
 Data can now be processed, which can take some time due to the CPU intensive nature of computing all the features and markers.
+
   ```bash
   vagrant ssh
   ingest_and_analyze.sh
@@ -166,6 +167,7 @@ Open this link in your web browser http://localhost:8080/grafana to visualize yo
 2. Once you authenticate, you will see the following screen.
 
   ![Grafana Main](imgs/grafana-main.png)
+
 
 3. Select the `Home` dropdown at the top left of the screen and choose the **MD2K_DEMO** dashboard.
 
@@ -192,15 +194,18 @@ Open this link in your web browser http://localhost:8080/jupyterhub/hub/login to
 
   ![Jupyter Hub](imgs/jupyter.png)
 
+
 2. A file browser will appear after successful authentication and you should choose the `cc_demo` folder.
 
   ![Jupyter Files](imgs/jupyter-files.png)
 
   ![Jupyter Demo](imgs/jupyter-demo.png)
 
+
 3. Click on the `CerebralCortex_Basic_Usage.ipynb` and it will open in a new tab.  This provides an overview of how to utilize Cerebral Cortex and visualize some data.
 
   ![Jupyter Cerebral Cortex Demo](imgs/jupyter-CC-demo.png)
+
 
 This example notebook demonstrates the following:
   - Import CerebralCortex libraries and loading configurations
@@ -218,45 +223,29 @@ This example notebook demonstrates the following:
   3. Click on new and select `pySpark (Spark 2.2.0) (Python 3)` to create a new Python script.
 
 
-
 ## Computing features
-The [CerebralCortex-DataAnalysis](https://github.com/MD2Korg/CerebralCortex-DataAnalysis) repository is available within the Vagrant virtual machine.  This repository contains the code to compute features on the data. The repository contains a number of features in the `core/feature` directory.
-The following features have been validated by us and that are what we believe is stable. The other features are still
-under development. Please keep an lookout on this page for updates to stable features.
-* phone_features
-* gpsfeature
-* puffmarker
-* rr_interval
+The [CerebralCortex-DataAnalysis](https://github.com/MD2Korg/CerebralCortex-DataAnalysis) repository is available within the Vagrant virtual machine and is accessible through the Jupyter interface.  This repository contains the code to compute features on the data. These features are located in the `core/feature` directory.
 
-`Simple_driver.ipynb` provides an example to execute features contained in the CerebralCortex-DataAnalysis repository.
+The following features have been validated by our team and are considered stable with the remaining features still
+under development. Please have a look at the documentation for each of the above features to get more insight into their functionality. Sensors/features in parentheses should be considered dependencies to compute the specified feature.
 
-Please have a look at the documentation for each of the above features to get more insight into their functionality.
+#### Stable Features
+  * phone_features (Smartphone)
+  * gpsfeature (Smartphone, gps, gps_daily)
+  * puffmarker (MotionSenseHRV)
+  * rr_interval (MotionSenseHRV)
 
-#### Sensors needed for the different features
-The `phone_features` and the `gpsfeature` can be computed from the data by your phone. The `puffmarker` and the `rr_interval`
-require the data from the wrist worn MotionsenseHRV sensor.
-
-#### Feature dependencies
-To execute `gpsfeature`, `gps` must first be computed and then `gps_daily` must be computed.
+#### Features Under Development
+  * xxx
+  * yyy
 
 
-
-## Increasing the available disk space in VM
-Edit the Vagrant file to add the following line.
-```
-config.vm.synced_folder "<host_machine_folder_path>", "<foder_path_in_VM>"
-```
-This will mount a folder from the host machine in the VM.
-
-## Removing Vagrant image of CC
+## Deleting Cerebral Cortex
 Run following commands if anything goes wrong and/or you want to uninstall CerebralCortex vagrant image
-```
-vagrant global-status
-Find the IMAGE-NAME. It would be required for next command
-vagrant destroy  IMAGE-NAME
-```
 
-
+```bash
+vagrant destroy
+```
 
 ## Starting and stopping Cerebral Cortex
 Stop Cerebral Cortex
@@ -280,6 +269,7 @@ vagrant up
 1. **I'm stuck, where do I get help?**
 
   Please look for more information or ask for help here: https://discuss.md2k.org/
+
 
 2. **System requirements**
 
