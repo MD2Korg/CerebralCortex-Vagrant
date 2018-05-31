@@ -1,2 +1,5 @@
 .vagrant
 *~
+vagrant_data/raw/*.json
+vagrant_data/raw/*.gz
+vagrant_data/processed/README.md
