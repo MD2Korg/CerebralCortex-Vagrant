@@ -114,7 +114,7 @@ The above commands display the status of all the services as shown below.
 
   ![mCerebrum Computer Interface](imgs/phone2computer.png)
 
-  ![Enable Android File Transfer](imgs/phoneAllowPC.png)
+  ![Enable Android File Transfer](imgs/phoneAllowPC2.png)
 
 3. Using the computer, navigate to the phone’s org.md2k.mCerebrum folder. `Phone > Android > data > org.md2k.mCerebrum > files > 636fcc1f-8966-4e63-a9df-0cbaa6e9296c`
 
