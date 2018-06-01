@@ -197,7 +197,7 @@ Open this link in your web browser http://localhost:8080/jupyterhub/hub/login to
 
 1. A login screen will be shown as follows.  
 
-  The username and password are both `md2k`.  The warning shown is because this site is running locally on your machine and is not secured by a security certificate.  There is no data leaving the machine and going across the internet.
+  The username and password are both `admin`.  The warning shown is because this site is running locally on your machine and is not secured by a security certificate.  There is no data leaving the machine and going across the internet.
 
   ![Jupyter Hub](imgs/jupyter.png)
 
@@ -238,13 +238,14 @@ under development. Please have a look at the documentation for each of the above
 
 #### Stable Features
   * phone_features (Smartphone)
+  * phone_screen_touch_features (Smartphone)
   * gpsfeature (Smartphone, gps, gps_daily)
   * puffmarker (MotionSenseHRV)
   * rr_interval (MotionSenseHRV)
 
 #### Features Under Development
-  * xxx
-  * yyy
+  * activty and posture classification (MotionSenseHRV)
+  * typing features (MotionSenseHRV)
 
 
 ## Deleting Cerebral Cortex
