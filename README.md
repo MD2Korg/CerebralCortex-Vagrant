@@ -106,13 +106,15 @@ The above commands display the status of all the services as shown below.
 
 ### Downloading mCerebrum data to your computer
 
-1. **Important**: You must first stop data collection before connecting the smartphone to a computer.
+1. **Important**: You must first stop data collection before connecting the smartphone to a computer. Use the toggle switch on the mCerebrum app home screen to turn off data collection.
+
+  ![Turn Off Data Collection](imgs/DataCollectionOFF.png)
 
 2. Connect the smartphone to a PC using the charging cable.
 
   ![mCerebrum Computer Interface](imgs/phone2computer.png)
 
-  ![Enable Android File Transfer](imgs/phone_allow.png)
+  ![Enable Android File Transfer](imgs/phoneAllowPC.png)
 
 3. Using the computer, navigate to the phone’s org.md2k.mCerebrum folder. `Phone > Android > data > org.md2k.mCerebrum > files > 636fcc1f-8966-4e63-a9df-0cbaa6e9296c`
 
