@@ -174,9 +174,9 @@ Open this link in your web browser http://localhost:8080/grafana/login to visual
   ![Grafana Main](imgs/grafana-main.png)
 
 
-3. Select the `Home` dropdown at the top left of the screen and choose the **MD2K_DEMO** dashboard.
+3. Select the `Home` dropdown at the top-left of the screen and choose the **MD2K_DEMO** dashboard.
 
-  ![Grafana Visualization](imgs/grafana-main-dashboard.png)
+  ![Grafana Visualization](imgs/GrafanaLegend.png)
 
 
 This is a pre-built visualization that provides some examples of the various types of displays that are possible.  
