@@ -118,13 +118,13 @@ The above commands display the status of all the services as shown below.
 
 3. Using the computer, navigate to the phone’s org.md2k.mCerebrum folder. `Phone > Android > data > org.md2k.mCerebrum > files > 636fcc1f-8966-4e63-a9df-0cbaa6e9296c`
 
-  ![mCerebrum Data Folder](imgs/mCerebrum_data_folder.png)
+  ![mCerebrum Data Folder](imgs/mCDataPhoneFolder.png)
 
 4. Copy all of the files in the folder and paste them into `PATH/TO/CerebralCortex-Vagrant-personal/vagrant_data/raw`
 
-  ![mCerebrum to Cerebral Cortex](imgs/mCerebrum_to_cerebral_cortex.png)
+  ![mCerebrum to Cerebral Cortex](imgs/CCDataFolder.png)
 
-5. Disconnect the smartphone from the computer
+5. Disconnect the smartphone from the computer.
 
 
 ### Importing and processing your data
