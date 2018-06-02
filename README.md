@@ -110,9 +110,11 @@ The above commands display the status of all the services as shown below.
 
   ![Turn Off Data Collection](imgs/DataCollectionOFF.png)
 
-2. Connect the smartphone to a PC using the charging cable.
+2. Connect the smartphone to a computer using the charging cable.
 
   ![mCerebrum Computer Interface](imgs/phone2computer.png)
+
+3. If prompted, accept the prompt on your phone to allow access to your phone files from the computer.
 
   ![Enable Android File Transfer](imgs/phoneAllowPC2.png)
 
