@@ -70,18 +70,19 @@ These steps are performed from the command line (Terminal) with the support of [
 
 3. Extract the `CerebralCortex-Vagrant-personal.zip` file and open it in `Explorer`
 
-4. Double click on the `cerebralcortex_initialize.cmd` file which will launch a command window and begin the installation of the Cerebral Cortex platform. This installation will take some time.
+4. Double click on the `cerebralcortex_initialize.cmd` file which will launch a command window and begin the installation of the Cerebral Cortex platform. This installation will take some time (approximately 5-10 minutes with a good internet connection).
 
-5. Double-click on `cerebralcortex_console.cmd` (found in the CerebralCortex-Vagrant-personal folder), then run all subsequent commands in the resulting command prompt window.
+5. When installation is complete, double-click on `cerebralcortex_console.cmd` (found in the CerebralCortex-Vagrant-personal folder). You will need to run all subsequent commands in the resulting command prompt window.
 
 ## Launch Cerebral Cortex
-Open the following link to start utilizing Cerebral Cortex http://localhost:8080/
+Open the following link to view the Cerebral Cortex homepage: http://localhost:8080/
 
 
 ## Optional: Steps to Explore Underlying Services
 
-Confirm that everything started up correctly. The following commands lists the the status of all the services used by CerebralCortex.  Docker-Compose commands can be used to
-interact with Cerebral Cortex's containers.
+Use the commands below to confirm that everything is installed and working correctly. Docker-Compose commands can be used to interact with Cerebral Cortex's containers. The following commands lists the the status of all the services used by CerebralCortex.  
+
+Note for anyone who may be less familiar with command prompts: Enter the commands shown below into the command prompt window one by one, pressing Enter after each entry.
 
 ```bash
 vagrant ssh
