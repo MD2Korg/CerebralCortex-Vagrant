@@ -59,7 +59,7 @@ These steps are performed from the command line (Terminal) with the support of [
 ## Windows 7+:
 
 1. Install VirtualBox and Vagrant
-  - Download and install the Windows binary for VirtualBox: https://www.virtualbox.org/wiki/Downloads
+  - Download and install the Windows binary for VirtualBox: https://www.virtualbox.org/wiki/Downloads (under the VirtualBox platform packages list, select the link for Widnows hosts)
   - Download and install the Windows binary for Vagrant: https://www.vagrantup.com/downloads.html
 
   Please consult [Vagrant Documentation](https://www.vagrantup.com/docs/)  if you face any installation errors for step 1.
