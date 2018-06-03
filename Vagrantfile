@@ -19,5 +19,11 @@ Vagrant.configure("2") do |config|
   # Force CentOS/7 to turn on the second ethernet interface
   config.vm.provision "shell", inline: "ifup eth1", run: "always"
 
+  # Restart all services
+  config.vm.provision "shell", run: "always", inline: <<-SHELL
+    cd /home/vagrant/CerebralCortex-DockerCompose
+    /usr/local/bin/docker-compose restart
+  SHELL
+
 end
 
