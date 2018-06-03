@@ -139,6 +139,7 @@ The above commands display the status of all the services as such as the example
   brew cask install android-platform-tools
   ```
 
+  Copy data from the phone.
   ```bash
   adb pull sdcard/Android/data/org.md2k.mcerebrum/files/636fcc1f-8966-4e63-a9df-0cbaa6e9296c/ ./
   ```
