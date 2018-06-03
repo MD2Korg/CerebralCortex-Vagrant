@@ -126,7 +126,19 @@ The above commands display the status of all the services as such as the example
 
   **Alternative for Mac OS X and Linux**
 
-  You will need to utilize the Android Debugging Tools to copy data from the phone.
+  You will need to utilize the Android Debugging Tools (https://www.xda-developers.com/install-adb-windows-macos-linux/) to copy data from the phone.
+
+  Linux
+  ```bash
+  wget https://dl.google.com/android/repository/platform-tools-latest-linux.zip
+  unzip platform-tools-latest-linux.zip
+  ```
+
+  Mac OS X
+  ```bash
+  brew cask install android-platform-tools
+  ```
+
   ```bash
   adb pull sdcard/Android/data/org.md2k.mcerebrum/files/636fcc1f-8966-4e63-a9df-0cbaa6e9296c/ ./
   ```
