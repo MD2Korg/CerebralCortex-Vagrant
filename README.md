@@ -14,7 +14,7 @@ This repository is allows you to install and evaluate the Cerebral Cortex platfo
 This software is intended for informational and demonstration purposes only and is not designed to diagnose, treat, cure, prevent, or track disease or health states. No content provided in this software is intended to serve as a substitute for any kind of professional (e.g., medical) advice.
 
 # Installation Instructions
-The Cerebral Cortex platform can installed and tested on any of the three major platforms: Linux, Mac OS X, and Windows.  The following instructions will walk you through installing the dependencies necessary to run Cerebral Cortex.  The Vagrant image is 3 GB and will take approximately 30 minutes to download on a 100 Mbit/second internet connection.
+The Cerebral Cortex platform can installed and tested on any of the three major platforms: Linux, Mac OS X, and Windows.  The following instructions will walk you through installing the dependencies necessary to run Cerebral Cortex.  The Vagrant image is 3 GB and will take approximately 5 minutes to download on a 100 Mbit/second internet connection.
 
 ## Linux: (Ubuntu 17.10)
 These steps are performed from the command line and do not need a graphical interface.
