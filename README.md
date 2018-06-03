@@ -1,6 +1,8 @@
 # Vagrant configuration for installing Cerebral Cortex
 This repository is allows you to install and evaluate the Cerebral Cortex platform.
 
+### Releases
+* **2018.06.04** Personal Edition Release
 
 # Disclaimer
 This software is intended for informational and demonstration purposes only and is not designed to diagnose, treat, cure, prevent, or track disease or health states. No content provided in this software is intended to serve as a substitute for any kind of professional (e.g., medical) advice.
