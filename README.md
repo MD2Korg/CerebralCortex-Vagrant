@@ -1,12 +1,14 @@
 # Vagrant configuration for installing Cerebral Cortex
-This repository is ideal for developers and engineers to install and evaluate the Cerebral Cortex platform.
+This repository is allows you to install and evaluate the Cerebral Cortex platform.
 
+### Releases
+* **2018.06.04** Personal Edition Release
 
 # Disclaimer
 This software is intended for informational and demonstration purposes only and is not designed to diagnose, treat, cure, prevent, or track disease or health states. No content provided in this software is intended to serve as a substitute for any kind of professional (e.g., medical) advice.
 
 # Installation Instructions
-The Cerebral Cortex platform can installed and tested on any of the three major platforms: Linux, Mac OS X, and Windows.  The following instructions will walk you through installing the dependencies necessary to run Cerebral Cortex.  The Vagrant image is 5.0 GB (TWH: FIX THIS) and will take approximately 7 minutes to download on a 100 Mbit/second internet connection.
+The Cerebral Cortex platform can installed and tested on any of the three major platforms: Linux, Mac OS X, and Windows.  The following instructions will walk you through installing the dependencies necessary to run Cerebral Cortex.  The Vagrant image is 3 GB and will take approximately 30 minutes to download on a 100 Mbit/second internet connection.
 
 ## Linux: (Ubuntu 17.10)
 These steps are performed from the command line and do not need a graphical interface.
@@ -60,7 +62,7 @@ These steps are performed from the command line (Terminal) with the support of [
 
 1. Install VirtualBox and Vagrant
   - Download and install the Windows binary for VirtualBox: https://www.virtualbox.org/wiki/Downloads (under the VirtualBox platform packages list, select the link for Windows hosts)
-  
+
   - Download and install the Windows binary for Vagrant: https://www.vagrantup.com/downloads.html
 
   Please consult [Vagrant Documentation](https://www.vagrantup.com/docs/)  if you face any installation errors for step 1.
@@ -82,7 +84,7 @@ Open the following link to view the Cerebral Cortex homepage: http://localhost:8
 
 Use the commands below to confirm that everything is installed and working correctly. Docker-Compose commands can be used to interact with Cerebral Cortex's containers. The following commands lists the the status of all the services used by CerebralCortex.  
 
-Note for anyone who may be less familiar with command prompts: Enter the commands shown below into the command prompt window one by one, pressing Enter after each entry.
+Note for anyone who may be less familiar with command prompts: Enter the commands shown below into the command prompt window one by one, pressing Enter after each entry. The ```vagrant ssh``` commands does not need to be input for each block.  It is sufficient to enter it once in most circumstances.
 
 ```bash
 vagrant ssh
@@ -90,7 +92,7 @@ cd CerebralCortex-DockerCompose/
 docker-compose ps
 ```
 
-The above commands display the status of all the services as shown below.
+The above commands display the status of all the services as such as the example shown below.
 ```
       Name                    Command               State                    Ports                   
  ---------------------------------------------------------------------------------------------------
@@ -112,7 +114,7 @@ The above commands display the status of all the services as shown below.
 
   ![Turn Off Data Collection](imgs/DataCollectionOFF.png)
 
-2. Connect the smartphone to a computer using the charging cable.
+2. Connect the smartphone to a computer using the charging/USB cable.
 
   ![mCerebrum Computer Interface](imgs/phone2computer.png)
 
@@ -123,6 +125,26 @@ The above commands display the status of all the services as shown below.
 3. Using the computer, navigate to the phone’s org.md2k.mCerebrum folder. `Phone > Android > data > org.md2k.mCerebrum > files > 636fcc1f-8966-4e63-a9df-0cbaa6e9296c`
 
   ![mCerebrum Data Folder](imgs/mCDataPhoneFolder.png)
+
+  **Alternative for Mac OS X and Linux**
+
+  You will need to utilize the Android Debugging Tools (https://www.xda-developers.com/install-adb-windows-macos-linux/) to copy data from the phone.
+
+  Linux
+  ```bash
+  wget https://dl.google.com/android/repository/platform-tools-latest-linux.zip
+  unzip platform-tools-latest-linux.zip
+  ```
+
+  Mac OS X
+  ```bash
+  brew cask install android-platform-tools
+  ```
+
+  Copy data from the phone.
+  ```bash
+  adb pull sdcard/Android/data/org.md2k.mcerebrum/files/636fcc1f-8966-4e63-a9df-0cbaa6e9296c/ ./
+  ```
 
 4. Copy all of the files in the folder and paste them into `PATH/TO/CerebralCortex-Vagrant-personal/vagrant_data/raw`
 
@@ -141,7 +163,7 @@ Some of the features that can be computed rely on the Google Places API and if y
 
 2. Navigate to the places web-service `Get API Key` page https://developers.google.com/places/web-service/get-api-key
 
-3. Follow the steps to `Get A Key` for the __standard Places API for Web__ option. By default, the key is good for 1000 queries/day and can be increased to 150k/day by verifying your identity with a credit card. 
+3. Follow the steps to `Get A Key` for the __standard Places API for Web__ option. By default, the key is good for 1000 queries/day and can be increased to 150k/day by verifying your identity with a credit card.
 
 4. When you receive your key, copy and paste it in the next step in place of the text ```ENTER_YOUR_KEY_HERE```.
 
@@ -162,8 +184,6 @@ Data can now be processed, which can take some time due to the CPU intensive nat
 **Note: Exceptions and Warnings are to be expected during the data ingestion and analyzing phase**
 
 A large number of console logs will appear on the screen indicating what the system is currently doing.  It will first preprocess the data files you copied from the mCerebrum app into a format that Cerebral Cortex will ingest.  Next, the ingestion pipeline will scan and import this data into Cerebral Cortex's internal data stores.  Finally, it will run a pre-specified set of feature computations based on the smartphone sensors streams.
-
-
 
 
 # Visualizing and Analyzing Your Data
@@ -189,7 +209,7 @@ Open this link in your web browser http://localhost:8080/grafana/login to visual
 
 This is a pre-built visualization that provides some examples of the various types of displays that are possible.  
 
-For example, ... (TWH Complete this with data)
+For example:
 - Data Yield of MSHRV-LED, MSHRV-Accel, AutoSenseBLE
 - Geolocation
 - Phone/SMS/Notifications
@@ -246,11 +266,11 @@ under development. Please have a look at the documentation for each of the above
   * phone_features (Smartphone)
   * phone_screen_touch_features (Smartphone)
   * gpsfeature (Smartphone, gps, gps_daily)
-  * puffmarker (MotionSenseHRV)
+  * puffMarker (MotionSenseHRV)
   * rr_interval (MotionSenseHRV)
 
 #### Features Under Development
-  * activty and posture classification (MotionSenseHRV)
+  * activity and posture classification (MotionSenseHRV)
   * typing features (MotionSenseHRV)
 
 
@@ -284,15 +304,17 @@ vagrant up
 
   Please look for more information or ask for help here: https://discuss.md2k.org/
 
+2. **How do I find out about new releases and software announcements**
 
-2. **System requirements**
+    Please sign up for our software announcement mailing list: md2k-software@googlegroups.com
+
+3. **System requirements**
 
   These are the minimum recommended system requirements for running Cerebral Cortex.
   - 2-4 core CPU
   - 16+ GB RAM
   - 10GB disk + enough to support the total data collection from mCerebrum
 
-
-3. **Errors encountered during provisioning**
+4. **Errors encountered during provisioning**
 
   Use `vagrant up --provision` to resume the installation.
