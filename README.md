@@ -72,7 +72,7 @@ These steps are performed from the command line (Terminal) with the support of [
 
 3. Extract the `CerebralCortex-Vagrant-personal.zip` file and open it in `Explorer`
 
-4. Double click on the `cerebralcortex_initialize.cmd` file which will launch a command window and begin the installation of the Cerebral Cortex platform. This installation will take some time (approximately 5-10 minutes with a good internet connection).
+4. Double click on the `cerebralcortex_initialize.cmd` file which will launch a command window and begin the installation of the Cerebral Cortex platform. This installation will take some time.
 
 5. When installation is complete, double-click on `cerebralcortex_console.cmd` (found in the CerebralCortex-Vagrant-personal folder). You will need to run all subsequent commands in the resulting command prompt window.
 
