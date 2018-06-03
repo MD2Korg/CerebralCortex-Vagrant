@@ -3,6 +3,12 @@ This repository is allows you to install and evaluate the Cerebral Cortex platfo
 
 ### Releases
 * **2018.06.04** Personal Edition Release
+  - Grafana visualization support
+  - Jupyter Notebook analysis platform
+  - [Cerebral Cortex 2.2.3](https://github.com/MD2Korg/CerebralCortex/tree/2.2.3)
+  - File system based storage architecture
+  - Ability to load data from the [mCerebrum Personal Edition](https://github.com/MD2Korg/mCerebrum-releases/raw/master/3.0/org.md2k.mcerebrum/mcerebrum3.0.0.apk) app
+  - Features and markers added: _phone features, screen touch features, GPS/location, puffMarker, RR-interval_
 
 # Disclaimer
 This software is intended for informational and demonstration purposes only and is not designed to diagnose, treat, cure, prevent, or track disease or health states. No content provided in this software is intended to serve as a substitute for any kind of professional (e.g., medical) advice.
