@@ -141,13 +141,15 @@ Some of the features that can be computed rely on the Google Places API and if y
 
 2. Navigate to the places web-service `Get API Key` page https://developers.google.com/places/web-service/get-api-key
 
-3. Follow the steps to `Get A Key` for the __standard Places API for Web__ option. By default, the key is good for 1000 queries/day and can be increased to 150k/day by verifying your identity with a credit card.
+3. Follow the steps to `Get A Key` for the __standard Places API for Web__ option. By default, the key is good for 1000 queries/day and can be increased to 150k/day by verifying your identity with a credit card. 
 
-4. Run the following command to enable the location-aware features in the Cerebral Cortex pipeline.
+4. When you receive your key, copy and paste it in the next step in place of the text ```ENTER_YOUR_KEY_HERE```.
+
+5. Run the following command to enable the location-aware features in the Cerebral Cortex pipeline.
 
   ```bash
   vagrant ssh
-  ./enable_google_places.sh COPY_KEY_HERE
+  ./enable_google_places.sh ENTER_YOUR_KEY_HERE
   ```
 
 #### Import and analyze the data
