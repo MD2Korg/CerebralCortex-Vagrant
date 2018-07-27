@@ -1,13 +1,19 @@
+# CerebralCortex-Vagrant
 
-# Vagrant configuration for installing Cerebral Cortex
-This repository is ideal for developers and engineers to install the Cerebral Cortex framework.
+Cerebral Cortex is the big data cloud companion of mCerebrum designed to support population-scale data analysis, visualization, model development, and intervention design for mobile sensor data.
+
+Vagrant configuration for installing Cerebral Cortex.
+
+You can find more information about MD2K software on our [software website](https://md2k.org/software) or the MD2K organization on our [MD2K website](https://md2k.org/).
+
+## Install
 
 This configuration has been tested on Ubuntu 17.10.
 
 1. To install Vagrant and dependencies
+
 ```
 $ sudo apt install virtualbox virtualbox-dkms virtualbox-guest-additions-iso
-
 $ wget https://releases.hashicorp.com/vagrant/2.0.1/vagrant_2.0.1_x86_64.deb
 $ sudo dpkg -i vagrant_2.0.1_x86_64.deb
 ```
@@ -28,6 +34,7 @@ $ sudo vagrant up
 
 4. Once the 3rd  step is complete, please execute the following command to
    confirm that the installation steps were successfully.
+   
 ```
 $ wget http://localhost/api/v1/auth/
 --2017-12-21 21:14:20--  http://localhost/api/v1/auth/
@@ -39,13 +46,15 @@ Username/Password Authentication Failed.
 ```
 The `Username/Password Authentication Failed` response confirms that the installation was successful and the system is online.
 
+## Examples
 
 The following commands lists the the status of all the services used by CerebralCortex.  Docker-Compose commands can be used to
 interact with Cerebral Cortex's containers.
-1. sudo vagrant ssh
-2. cd CerebralCortex-DockerCompose/
-3. docker-compose ps
-The above command displays the status of all the services as shown below. 
+1. `sudo vagrant ssh`
+2. `cd CerebralCortex-DockerCompose/``
+3. `docker-compose ps`
+
+`docker-compose ps` displays the status of all the services as shown below. 
 ```
      Name                    Command               State                                      Ports                                     
      ---------------------------------------------------------------------------------------------------------------------------------------
@@ -61,16 +70,16 @@ The above command displays the status of all the services as shown below.
      md2k-zookeeper    /bin/sh -c /usr/sbin/sshd  ...   Up      0.0.0.0:2181->2181/tcp, 22/tcp, 2888/tcp, 3888/tcp 
 ```
 
-## Running test cases
+#### Running test cases
 Run system level test-cases to make sure all the things are setup properly. System level test case will generate some sample data, process it using CerebralCortex, store it, retrieve it and verify results with predefined test values.
 ```
 cd /home/vagrant/CerebralCortex/cerebralcortex/core/test_suite/
 python3.6 -m unittest discover
 ```
 
-## Importing data
-UPDATE THIS, pluging the phone
-The
+#### Importing data
+UPDATE THIS, pluging the phone.
+
 `/home/vagrant/CerebralCortex-DockerCompose/cc_config_file\cc_vagrant_configuration.yml`
 contains the parameter that stores the path from where data can be imported into 
 CerebralCortex
@@ -91,16 +100,16 @@ python3.6 store_dirs_to_db.py --conf
 
 cd /home/vagrant/CerebralCortex-KafkaStreamPreprocessor/
 sudo sh run_vagrant.sh
-
 ```
-## Increasing the available disk space in VM
+
+#### Increasing the available disk space in VM
 Edit the Vagrant file to add the following line.
 ```
 config.vm.synced_folder "<host_machine_folder_path>", "<foder_path_in_VM>"
 ```
 This will mount a folder from the host machine in the VM. 
 
-## Using Jupyter Notebook
+#### Using Jupyter Notebook
 You may access Python Jupyter Notebook interface at:
 ```
 http://IP-ADDRESS/jupyterhub
@@ -124,7 +133,7 @@ Click on Files tab
 Click on new and select pySpark (Spark 2.2.0) (Python 3) to create a new Python script.
 ```
 
-## Using mCerebrum
+#### Using mCerebrum
 
 Download the latest mCerebrum from [https://github.com/MD2Korg/mCerebrum-releases/tree/master/2.0/org.md2k.mcerebrum](https://github.com/MD2Korg/mCerebrum-releases/tree/master/2.0/org.md2k.mcerebrum)
 
@@ -137,14 +146,14 @@ Once the system successfully authenticates, it will download a predefined
 configuration file for you to test our the platform.  Once `Start Study` is
 pressed the system will begin collecting and uploading to this enviornment.
 
-## Removing Vagrant image of CC
+#### Removing Vagrant image of CC
 Run following commands if anything goes wrong and/or you want to uninstall CerebralCortex vagrant image
 ```
 sudo vagrant global-status
 Find the IMAGE-NAME. It would be required for next command
 sudo vagrant destroy  IMAGE-NAME
 ```
-## Starting and stopping Cerebral Cortex
+#### Starting and stopping Cerebral Cortex
 When you are done using stop as
 PUT THIS IN THE END
 to resume
@@ -163,8 +172,7 @@ Suspend Cerebral Cortex
 $ sudo vagrant suspend
 ```
 
-##FAQ
-XXX Add me
+## FAQ
 1. System requirements
 2. Possible errors that can be encountered during the installation.
 ```
@@ -179,3 +187,43 @@ sudo vagrant up --provision
 ```
 
 
+## Contributing
+Please read our [Contributing Guidelines](https://md2k.org/contributing/contributing-guidelines.html) for details on the process for submitting pull requests to us.
+
+We use the [Python PEP 8 Style Guide](https://www.python.org/dev/peps/pep-0008/).
+
+Our [Code of Conduct](https://md2k.org/contributing/code-of-conduct.html) is the [Contributor Covenant](https://www.contributor-covenant.org/).
+
+Bug reports can be submitted through [JIRA](https://md2korg.atlassian.net/secure/Dashboard.jspa).
+
+Our discussion forum can be found [here](https://discuss.md2k.org/).
+
+## Versioning
+
+We use [Semantic Versioning](https://semver.org/) for versioning the software which is based on the following guidelines.
+
+MAJOR.MINOR.PATCH (example: 3.0.12)
+
+  1. MAJOR version when incompatible API changes are made,
+  2. MINOR version when functionality is added in a backwards-compatible manner, and
+  3. PATCH version when backwards-compatible bug fixes are introduced.
+
+For the versions available, see [this repository's tags](https://github.com/MD2Korg/CerebralCortex-Vagrant/tags).
+
+## Contributors
+
+Link to the [list of contributors](https://github.com/MD2Korg/CerebralCortex-Vagrant/graphs/contributors) who participated in this project.
+
+## License
+
+This project is licensed under the BSD 2-Clause - see the [license](https://md2k.org/software-under-the-hood/software-uth-license) file for details.
+
+## Acknowledgments
+
+* [National Institutes of Health](https://www.nih.gov/) - [Big Data to Knowledge Initiative](https://datascience.nih.gov/bd2k)
+  * Grants: R01MD010362, 1UG1DA04030901, 1U54EB020404, 1R01CA190329, 1R01DE02524, R00MD010468, 3UH2DA041713, 10555SC
+* [National Science Foundation](https://www.nsf.gov/)
+  * Grants: 1640813, 1722646
+* [Intelligence Advanced Research Projects Activity](https://www.iarpa.gov/)
+  * Contract: 2017-17042800006
+
